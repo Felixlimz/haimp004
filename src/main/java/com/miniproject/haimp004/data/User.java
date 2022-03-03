@@ -1,13 +1,6 @@
 package com.miniproject.haimp004.data;
 
-import com.sun.istack.NotNull;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -15,12 +8,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotEmpty
+    @Column(nullable = false, length = 45)
     private String name;
 
+    @Column(nullable = false, unique = true, length = 20)
+    private String userName;
+
+    @Column(nullable = false, unique = true, length = 45)
     private String email;
 
-    @NotEmpty
+    @Column(nullable = false, length = 45)
     private String password = "1234";
 
     public Integer getId() {
@@ -53,5 +50,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }
