@@ -17,8 +17,8 @@ public class User {
     @Column(nullable = false, unique = true, length = 45)
     private String email;
 
-    @Column(nullable = false, length = 45)
-    private String password = "1234";
+    @Column(nullable = false, length = 64)
+    private String password;
 
     public Integer getId() {
         return id;

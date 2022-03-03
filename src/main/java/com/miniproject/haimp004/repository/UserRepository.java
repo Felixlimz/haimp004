@@ -12,6 +12,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     @Query(value = "SELECT * FROM user u WHERE u.userName LIKE %:keyword%", nativeQuery = true)
     List<User> findUserByKeyword(@Param("keyword") String keyword);
 
-    @Query("SELECT u FROM User u WHERE u.email = :email or u.username = :email")
-    public User findByEmail(@Param("email") String email);
+    @Query("SELECT u FROM User u WHERE u.email = ?1")
+    public User findByEmail(String email);
 }
