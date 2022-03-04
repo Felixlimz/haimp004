@@ -50,15 +50,7 @@ public class MainController {
         model.addAttribute("listCategory", listCategory);
         Category category = new Category();
         model.addAttribute("category", category);
-        return "category2";
-    }
-
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveCategoryAction(@ModelAttribute("category") Category category){
-        categoryService.save(category);
-        System.out.println(category);
-
-        return "redirect:/";
+        return "category";
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
