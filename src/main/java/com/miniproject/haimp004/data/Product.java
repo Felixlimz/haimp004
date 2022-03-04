@@ -20,6 +20,7 @@ public class Product {
 
     private Integer productStock;
 
+    //Setter dan Getter
     public Integer getProductNo() {
         return productNo;
     }
