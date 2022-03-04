@@ -2,21 +2,17 @@ package com.miniproject.haimp004.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer productNo;
 
     private String productName;
 
-    @ManyToOne
-    @JoinColumn(name = "nameCategory")
-    private Category productCategory;
+    private String productCategory;
 
     private Integer productStock;
 
@@ -37,11 +33,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public Category getProductCategory() {
+    public String getProductCategory() {
         return productCategory;
     }
 
-    public void setProductCategory(Category productCategory) {
+    public void setProductCategory(String productCategory) {
         this.productCategory = productCategory;
     }
 

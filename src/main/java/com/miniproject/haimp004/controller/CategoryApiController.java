@@ -33,6 +33,7 @@ public class CategoryApiController {
     @Autowired
     private CategoryService categoryService;
 
+
     @RequestMapping("/list")
     public  String viewListCategory(Model model){
         List<Category> listCategory = categoryService.listAll();
@@ -75,4 +76,5 @@ public class CategoryApiController {
         categoryService.delete(id);
         return "redirect:/category/list";
     }
+
 }

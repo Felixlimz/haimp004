@@ -27,9 +27,9 @@
             <td th:text="${product.productCategory}">Brand</td>
             <td th:text="${product.productStock}">Made in</td>
             <td>
-                <a th:href="@{'/edit/' + ${product.productNo}}">Edit</a>
+                <a th:href="@{'/product/edit/' + ${product.productNo}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete/' + ${product.productNo}}">Delete</a>
+                <a th:href="@{'/product/delete/' + ${product.productNo}}">Delete</a>
             </td>
         </tr>
         </tbody>

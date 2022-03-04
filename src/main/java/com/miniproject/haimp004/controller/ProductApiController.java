@@ -2,8 +2,7 @@ package com.miniproject.haimp004.controller;
 
 import com.miniproject.haimp004.data.Category;
 import com.miniproject.haimp004.data.Product;
-import com.miniproject.haimp004.repository.CategoryRepository;
-import com.miniproject.haimp004.repository.ProductRepository;
+import com.miniproject.haimp004.service.CategoryService;
 import com.miniproject.haimp004.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,43 +11,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping(path = "/product")
 public class ProductApiController {
-//    @Autowired
-//    private ProductRepository productRepository;
-//
-//    @Autowired
-//    private CategoryRepository categoryRepository;
-//
-//    @PostMapping(path = "/add")
-//    public @ResponseBody String addNewProduct (@RequestParam String name,
-//                                               @RequestParam String category,
-//                                               @RequestParam Integer stock,
-//                                               @RequestParam Integer productNo){
-//        Optional<Category> id = categoryRepository.findById(category);
-//        if(id.isEmpty()) {
-//            return "Save Failed. No Such Category";
-//        }
-//        Product newProduct = new Product();
-//        newProduct.setProductNo(productNo);
-//        newProduct.setProductName(name);
-//        newProduct.setProductStock(stock);
-//        newProduct.setProductCategory(id.get());
-//        productRepository.save(newProduct);
-//        return "Saved";
-//    }
-//
-//    @GetMapping("/all")
-//    public @ResponseBody Iterable<Product> getAllProduct(){
-//        return productRepository.findAll();
-//    }
-
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @RequestMapping("/list")
     public String viewListProduct(Model model){
@@ -62,6 +34,10 @@ public class ProductApiController {
     public String viewAddNewProduct(Model model){
         Product product = new Product();
         model.addAttribute("product", product);
+
+        List<Category> listCategory = categoryService.listAll();
+        model.addAttribute("listCategory", listCategory);
+
         return "new_product_page";
     }
 
@@ -69,15 +45,32 @@ public class ProductApiController {
     public String saveProductAction(@ModelAttribute("product") Product product){
         productService.saveProduct(product);
 
+        System.out.println(product);
+        System.out.println("SUKSES");
+
         return "redirect:/";
     }
 
     @RequestMapping("/edit/{id}")
     public ModelAndView viewEditProduct(@PathVariable(name = "id") int id){
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView("edit_product");
         Product product = productService.get(id);
         modelAndView.addObject("product", product);
 
+        List<Category> listCategory = categoryService.listAll();
+        modelAndView.addObject("listCategory", listCategory);
+
+        Category temp = new Category();
+        for(Category category: listCategory){
+            if(category.getNameCategory().equals(product.getProductCategory())){
+                temp = category;
+            }
+        }
+        int itemPos = listCategory.indexOf(temp);
+        System.out.println(itemPos);
+        System.out.println(temp);
+        listCategory.remove(itemPos);
+        listCategory.add(0, temp);
         return modelAndView;
     }
 

@@ -1,28 +1,68 @@
 package com.miniproject.haimp004.controller;
 
 import com.miniproject.haimp004.data.User;
-import com.miniproject.haimp004.repository.UserRepository;
+import com.miniproject.haimp004.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
-@RequestMapping(path = "/api/user")
+@RequestMapping(path = "/user")
 public class UserApiController {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
-    @PostMapping(path = "/add")
-    public @ResponseBody String addNewUser (@RequestParam String name, @RequestParam String email){
-        User newUser = new User();
-        newUser.setName(name);
-        newUser.setEmail(email);
-        userRepository.save(newUser);
-        return "Saved";
+
+    @RequestMapping("/list")
+    public  String viewListUser(Model model){
+        List<User> listUser = userService.listAll();
+        model.addAttribute("listUser", listUser);
+
+        User user = new User();
+        model.addAttribute("user", user);
+
+        return "list_user_page";
     }
 
-    @GetMapping(path = "/all")
-    public @ResponseBody Iterable<User> getAllUsers(){
-        return userRepository.findAll();
+    @RequestMapping("/new")
+    public ModelAndView viewAddNewCategory(Model model){
+        ModelAndView modelAndView = new ModelAndView("new_user_page");
+        User user = new User();
+        model.addAttribute("user", user);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveUserAction(@ModelAttribute("user") User user){
+        String defaultPassword = "12345678";
+        if(userService.getUserByName(user.getName()) != null){
+            defaultPassword = userService.getUserByName(user.getName()).getPassword();
+        }
+        System.out.println(defaultPassword);
+        user.setPassword(defaultPassword);
+        userService.save(user);
+        System.out.println(user);
+
+        return "redirect:/user/list";
+    }
+
+    @RequestMapping("/edit/{id}")
+    public ModelAndView viewEditUser(@PathVariable(name = "id") int id){
+        ModelAndView modelAndView = new ModelAndView("edit_user");
+        User user = userService.get(id);
+        modelAndView.addObject("user", user);
+
+        return modelAndView;
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteUserAction(@PathVariable(name = "id") int id){
+        userService.delete(id);
+        return "redirect:/user/list";
     }
 }
