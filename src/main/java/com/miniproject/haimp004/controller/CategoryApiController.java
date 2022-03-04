@@ -38,14 +38,17 @@ public class CategoryApiController {
         List<Category> listCategory = categoryService.listAll();
         model.addAttribute("listCategory", listCategory);
 
-        return "list_category_page";
+        Category category = new Category();
+        model.addAttribute("category", category);
+
+        return "category2";
      }
 
     @RequestMapping("/new")
     public String viewAddNewCategory(Model model){
         Category category = new Category();
         model.addAttribute("category", category);
-        return "new_category_page";
+        return "new_category_page2";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -53,7 +56,7 @@ public class CategoryApiController {
         categoryService.save(category);
         System.out.println(category);
 
-        return "redirect:/";
+        return "redirect:/category/list";
     }
 
     @RequestMapping("/edit/{id}")
@@ -68,6 +71,6 @@ public class CategoryApiController {
     @RequestMapping("/delete/{id}")
     public String deleteCategoryAction(@PathVariable(name = "id") int id){
         categoryService.delete(id);
-        return "redirect:/";
+        return "redirect:/category/list";
     }
 }

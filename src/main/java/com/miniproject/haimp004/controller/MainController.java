@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
+//@RequestMapping(path = "/api")
 public class MainController {
 
     @Autowired
@@ -49,11 +50,11 @@ public class MainController {
         model.addAttribute("listCategory", listCategory);
         Category category = new Category();
         model.addAttribute("category", category);
-        return "category";
+        return "category2";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String categorySave(@ModelAttribute("category") Category category){
+    public String saveCategoryAction(@ModelAttribute("category") Category category){
         categoryService.save(category);
         System.out.println(category);
 
