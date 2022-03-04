@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <!-- Required meta tags -->
@@ -423,14 +425,15 @@
               <p class="card-description">
                 <!-- Basic form elements -->
               </p>
-              <form class="forms-sample">
+              <form action="#" th:action="@{/category/save}" th:object="${category}"
+                    method="post">
                 <div class="form-group">
                   <label for="exampleInputName1">Product Name</label>
-                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Product Name">
+                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Product Name" th:field="*{nameCategory}">
                 </div>
                 <div class="form-group">
                   <label for="exampleTextarea1">Description</label>
-                  <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                  <textarea class="form-control" id="exampleTextarea1" rows="4" th:field="*{detailCategory}"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 <button class="btn btn-light">Cancel</button>
@@ -470,5 +473,4 @@
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
 </body>
-
 </html>
