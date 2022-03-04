@@ -45,10 +45,12 @@ public class CategoryApiController {
      }
 
     @RequestMapping("/new")
-    public String viewAddNewCategory(Model model){
+    public ModelAndView viewAddNewCategory(Model model){
+        ModelAndView modelAndView = new ModelAndView("new_category_page3");
         Category category = new Category();
         model.addAttribute("category", category);
-        return "new_category_page2";
+
+        return modelAndView;
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -61,7 +63,7 @@ public class CategoryApiController {
 
     @RequestMapping("/edit/{id}")
     public ModelAndView viewEditCategory(@PathVariable(name = "id") int id){
-        ModelAndView modelAndView = new ModelAndView("edit_category");
+        ModelAndView modelAndView = new ModelAndView("edit_category2");
         Category category = categoryService.get(id);
         modelAndView.addObject("category", category);
 
