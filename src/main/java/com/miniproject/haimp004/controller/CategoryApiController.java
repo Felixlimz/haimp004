@@ -42,12 +42,12 @@ public class CategoryApiController {
         Category category = new Category();
         model.addAttribute("category", category);
 
-        return "category2";
+        return "category";
      }
 
     @RequestMapping("/new")
     public ModelAndView viewAddNewCategory(Model model){
-        ModelAndView modelAndView = new ModelAndView("new_category_page3");
+        ModelAndView modelAndView = new ModelAndView("new_category_page");
         Category category = new Category();
         model.addAttribute("category", category);
 
@@ -59,12 +59,12 @@ public class CategoryApiController {
         categoryService.save(category);
         System.out.println(category);
 
-        return "redirect:/category/list";
+        return "redirect:/category";
     }
 
     @RequestMapping("/edit/{id}")
     public ModelAndView viewEditCategory(@PathVariable(name = "id") int id){
-        ModelAndView modelAndView = new ModelAndView("edit_category2");
+        ModelAndView modelAndView = new ModelAndView("edit_category");
         Category category = categoryService.get(id);
         modelAndView.addObject("category", category);
 
@@ -74,7 +74,7 @@ public class CategoryApiController {
     @RequestMapping("/delete/{id}")
     public String deleteCategoryAction(@PathVariable(name = "id") int id){
         categoryService.delete(id);
-        return "redirect:/category/list";
+        return "redirect:/category";
     }
 
 }
