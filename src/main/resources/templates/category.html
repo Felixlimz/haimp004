@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -358,58 +357,73 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td class="py-1">
-                            <input class="checkbox" type="checkbox">
-                          </td>
+<!--                        <tr>-->
+<!--                          <td class="py-1">-->
+<!--                            <input class="checkbox" type="checkbox">-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Peralatan Kantor-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Description Here-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                        <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>-->
+<!--                        <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>-->
+<!--                        <button type="button" class="btn btn-danger btn-rounded btn-icon">-->
+<!--                          <i class="mdi mdi-account-remove"></i>-->
+<!--                        </button>-->
+<!--                          </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                          <td class="py-1">-->
+<!--                            <input class="checkbox" type="checkbox">-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Peralatan Dapur-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Description Here-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>-->
+<!--                            <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>-->
+<!--                            <button type="button" class="btn btn-danger btn-rounded btn-icon">-->
+<!--                              <i class="mdi mdi-account-remove"></i>-->
+<!--                            </button>-->
+<!--                          </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                          <td class="py-1">-->
+<!--                            <input class="checkbox" type="checkbox">-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Furniture-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Description Here-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>-->
+<!--                            <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>-->
+<!--                            <button type="button" class="btn btn-danger btn-rounded btn-icon">-->
+<!--                              <i class="mdi mdi-account-remove"></i>-->
+<!--                            </button>-->
+<!--                          </td>-->
+<!--                        </tr>-->
+                        <tr th:each="category : ${listCategory}">
+                          <td th:text="${category.id}">Product ID</td>
+                          <td th:text="${category.nameCategory}">Category Name</td>
+                          <td th:text="${category.detailCategory}">Category Detail</td>
                           <td>
-                            Peralatan Kantor
-                          </td>
-                          <td>
-                            Description Here
-                          </td>
-                          <td>
-                        <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>
-                        <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>
-                        <button type="button" class="btn btn-danger btn-rounded btn-icon">
-                          <i class="mdi mdi-account-remove"></i>
-                        </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <input class="checkbox" type="checkbox">
-                          </td>
-                          <td>
-                            Peralatan Dapur
-                          </td>
-                          <td>
-                            Description Here
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>
-                            <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>
-                            <button type="button" class="btn btn-danger btn-rounded btn-icon">
+                            <a type="button" class="btn btn-success btn-rounded btn-fw">View</a>
+                            <a type="button" class="btn btn-info btn-rounded btn-fw" th:href="@{'/category/edit/' + ${category.id}}">Edit</a>
+                            <a type="button" class="btn btn-danger btn-rounded btn-icon" th:href="@{'/category/delete/' + ${category.id}}">
                               <i class="mdi mdi-account-remove"></i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <input class="checkbox" type="checkbox">
-                          </td>
-                          <td>
-                            Furniture
-                          </td>
-                          <td>
-                            Description Here
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>
-                            <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>
-                            <button type="button" class="btn btn-danger btn-rounded btn-icon">
-                              <i class="mdi mdi-account-remove"></i>
-                            </button>
+                            </a>
+<!--                            <a th:href="@{'/category/edit/' + ${category.id}}">Edit</a>-->
+<!--                            &nbsp;&nbsp;&nbsp;-->
+<!--                            <a th:href="@{'/category/delete/' + ${category.id}}">Delete</a>-->
                           </td>
                         </tr>
                       </tbody>
@@ -425,15 +439,14 @@
               <p class="card-description">
                 <!-- Basic form elements -->
               </p>
-              <form action="#" th:action="@{/category/save}" th:object="${category}"
-                    method="post">
+              <form class="forms-sample" >
                 <div class="form-group">
                   <label for="exampleInputName1">Product Name</label>
-                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Product Name" th:field="*{nameCategory}">
+                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Product Name">
                 </div>
                 <div class="form-group">
                   <label for="exampleTextarea1">Description</label>
-                  <textarea class="form-control" id="exampleTextarea1" rows="4" th:field="*{detailCategory}"></textarea>
+                  <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 <button class="btn btn-light">Cancel</button>
@@ -473,4 +486,5 @@
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
 </body>
+
 </html>

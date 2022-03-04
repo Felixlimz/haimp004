@@ -18,6 +18,7 @@ import java.util.List;
 
 @Controller
 public class MainController {
+
     @Autowired
     private CategoryService categoryService;
 
@@ -32,14 +33,37 @@ public class MainController {
         return "login";
     }
 
-    @RequestMapping(value = "/test")
-    public String testPage(Model model){
+    @RequestMapping(value = "/homepage", method = RequestMethod.GET)
+    public String homePage(Model model, String error, String logout){
+        return "homepage";
+    }
+
+    @RequestMapping(value = "/product", method = RequestMethod.GET)
+    public String productPage(Model model, String error, String logout){
+        return "product";
+    }
+
+    @RequestMapping(value = "/category", method = RequestMethod.GET)
+    public String categoryPage(Model model, String error, String logout){
         List<Category> listCategory = categoryService.listAll();
         model.addAttribute("listCategory", listCategory);
-
         Category category = new Category();
         model.addAttribute("category", category);
-        return "product-category";
+        return "category";
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String categorySave(@ModelAttribute("category") Category category){
+        categoryService.save(category);
+        System.out.println(category);
+
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String userPage(Model model, String error, String logout){
+
+        return "user";
     }
 //    @Autowired
 //    private UserRepository userRepository;
