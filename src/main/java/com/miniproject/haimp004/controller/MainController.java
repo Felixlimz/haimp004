@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,7 +47,17 @@ public class MainController {
     public String categoryPage(Model model, String error, String logout){
         List<Category> listCategory = categoryService.listAll();
         model.addAttribute("listCategory", listCategory);
+        Category category = new Category();
+        model.addAttribute("category", category);
         return "category";
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String categorySave(@ModelAttribute("category") Category category){
+        categoryService.save(category);
+        System.out.println(category);
+
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
