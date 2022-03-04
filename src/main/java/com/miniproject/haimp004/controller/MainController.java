@@ -1,7 +1,9 @@
 package com.miniproject.haimp004.controller;
 
+import com.miniproject.haimp004.data.Category;
 import com.miniproject.haimp004.data.User;
 import com.miniproject.haimp004.repository.UserRepository;
+import com.miniproject.haimp004.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,9 @@ import java.util.List;
 @Controller
 public class MainController {
 
+    @Autowired
+    private CategoryService categoryService;
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model, String error, String logout){
         if (error != null)
@@ -25,6 +30,29 @@ public class MainController {
             model.addAttribute("msg", "You have been logged out successfully.");
 
         return "login";
+    }
+
+    @RequestMapping(value = "/homepage", method = RequestMethod.GET)
+    public String homePage(Model model, String error, String logout){
+        return "homepage";
+    }
+
+    @RequestMapping(value = "/product", method = RequestMethod.GET)
+    public String productPage(Model model, String error, String logout){
+        return "product";
+    }
+
+    @RequestMapping(value = "/category", method = RequestMethod.GET)
+    public String categoryPage(Model model, String error, String logout){
+        List<Category> listCategory = categoryService.listAll();
+        model.addAttribute("listCategory", listCategory);
+        return "category";
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String userPage(Model model, String error, String logout){
+
+        return "user";
     }
 //    @Autowired
 //    private UserRepository userRepository;
