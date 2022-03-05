@@ -8,12 +8,9 @@ import com.miniproject.haimp004.service.CategoryService;
 import com.miniproject.haimp004.service.ProductService;
 import com.miniproject.haimp004.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -63,16 +60,16 @@ public class MainController {
         return "category";
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String userPage(Model model, String error, String logout){
-//        List<User> listUser = userService.listAll();
-//        model.addAttribute("listUser", listUser);
+//    @RequestMapping(value = "/user", method = RequestMethod.GET)
+//    public String userPage(Model model, String error, String logout){
+////        List<User> listUser = userService.listAll();
+////        model.addAttribute("listUser", listUser);
+////
+////        User user = new User();
+////        model.addAttribute("user", user);
 //
-//        User user = new User();
-//        model.addAttribute("user", user);
-
-        return "user";
-    }
+//        return "user";
+//    }
 
     @Autowired
     private UserRepository userRepository;
