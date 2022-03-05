@@ -66,9 +66,6 @@ public class MainController {
         user.setPassword("password");
         user.setEmail("felixlim@gmail.com");
         user.setName("Felix Lim");
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
         userRepository.save(user);
         return "SAVED";
 

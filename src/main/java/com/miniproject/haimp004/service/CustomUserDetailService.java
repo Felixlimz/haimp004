@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+
 public class CustomUserDetailService  implements UserDetailsService{
     @Autowired
     private UserRepository userRepository;
@@ -20,4 +21,5 @@ public class CustomUserDetailService  implements UserDetailsService{
         }
         return new CustomUserDetails(user);
     }
+
 }
