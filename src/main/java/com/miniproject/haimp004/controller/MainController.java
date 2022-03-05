@@ -60,16 +60,16 @@ public class MainController {
         return "category";
     }
 
-//    @RequestMapping(value = "/user", method = RequestMethod.GET)
-//    public String userPage(Model model, String error, String logout){
-////        List<User> listUser = userService.listAll();
-////        model.addAttribute("listUser", listUser);
-////
-////        User user = new User();
-////        model.addAttribute("user", user);
-//
-//        return "user";
-//    }
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String userPage(Model model, String error, String logout){
+        List<User> listUser = userService.listAll();
+        model.addAttribute("listUser", listUser);
+
+        User user = new User();
+        model.addAttribute("user", user);
+
+        return "user";
+    }
 
     @Autowired
     private UserRepository userRepository;

@@ -32,7 +32,7 @@ public class UserApiController {
         model.addAttribute("user", user);
         model.addAttribute("message", userAuth.getUsername());
 
-        return "list_user_page";
+        return "user";
     }
 
     @RequestMapping("/new")
@@ -55,7 +55,7 @@ public class UserApiController {
         userService.save(user);
         System.out.println(user);
 
-        return "redirect:/user/list";
+        return "redirect:/user";
     }
 
     @RequestMapping("/edit/{id}")
@@ -70,6 +70,6 @@ public class UserApiController {
     @RequestMapping("/delete/{id}")
     public String deleteUserAction(@PathVariable(name = "id") int id){
         userService.delete(id);
-        return "redirect:/user/list";
+        return "redirect:/user";
     }
 }
