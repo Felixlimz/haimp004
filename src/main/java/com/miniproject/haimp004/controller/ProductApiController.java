@@ -58,7 +58,6 @@ public class ProductApiController {
         modelAndView.addObject("product", product);
 
         List<Category> listCategory = categoryService.listAll();
-        modelAndView.addObject("listCategory", listCategory);
 
         Category temp = new Category();
         for(Category category: listCategory){
@@ -71,6 +70,9 @@ public class ProductApiController {
         System.out.println(temp);
         listCategory.remove(itemPos);
         listCategory.add(0, temp);
+
+        modelAndView.addObject("listCategory", listCategory);
+
         return modelAndView;
     }
 
@@ -78,6 +80,16 @@ public class ProductApiController {
     public String deleteProductAction(@PathVariable(name = "id") int id){
         productService.deleteProduct(id);
         return "redirect:/";
+    }
+
+    @RequestMapping("/detail/{id}")
+    public ModelAndView viewProduct(@PathVariable(name = "id") int id){
+        ModelAndView modelAndView = new ModelAndView("product_detail");
+        Product product = productService.get(id);
+        modelAndView.addObject("product", product);
+
+
+        return modelAndView;
     }
 
 }

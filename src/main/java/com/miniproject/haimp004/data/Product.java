@@ -16,6 +16,8 @@ public class Product {
 
     private Integer productStock;
 
+    private String imageLink;
+
     //Setter dan Getter
     public Integer getProductNo() {
         return productNo;
@@ -49,4 +51,11 @@ public class Product {
         this.productStock = productStock;
     }
 
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
 }
