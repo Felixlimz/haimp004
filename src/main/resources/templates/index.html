@@ -32,7 +32,8 @@
 <!-- Panel Top #08 -->
 <nav class="panel top">
   <div class="sections desktop">
-    <div class="left"><a href="#" title="Slides Framework"><h1><b>BCA</b></h1></a></div>
+    <div class="left"><a href="#" title="Slides Framework"><img th:src="@{/images/logo.svg}" class="mr-2"
+                                                                alt="logo"></a></div>
     <div class="center">
     </div>
     <div class="right">
@@ -42,7 +43,8 @@
     </div>
   </div>
   <div class="sections compact hidden">
-    <div class="left"><a href="#" title="Slides Framework"><h1><b>BCA</b></h1></a></div>
+    <div class="left"><a href="#" title="Slides Framework"><img th:src="@{/images/logo.svg}" class="mr-2"
+                                                                alt="logo"></a></div>
     <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
   </div>
 </nav>
@@ -57,7 +59,7 @@
           <div class="fix-3-12">
             <h1><b>BCA</b></h1>
           </div>
-          <p class="ae-3"><span class="opacity-8">Start now and get <b>free bonus</b> on account</span></p>
+          <p class="ae-3"><span class="opacity-8">The whole <b>Library</b> is in your <b>Hand</b></span></p>
           <div th:if="${param.error}">
             <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
           </div>
