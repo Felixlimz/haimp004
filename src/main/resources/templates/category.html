@@ -413,7 +413,7 @@
 <!--                          </td>-->
 <!--                        </tr>-->
                         <tr th:each="category : ${listCategory}">
-                          <td th:text="${category.id}">Product ID</td>
+                          <td><input class="checkbox" type="checkbox"></td>
                           <td th:text="${category.nameCategory}">Category Name</td>
                           <td th:text="${category.detailCategory}">Category Detail</td>
                           <td>

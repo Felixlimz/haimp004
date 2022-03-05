@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <!-- Required meta tags -->
@@ -334,6 +335,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Product List</h4>
+                  <a class="btn btn-light" href="/product/new">Add Product</a>
                   <p class="card-description">
                     <!-- Add class <code>.table-striped</code> -->
                   </p>
@@ -362,120 +364,135 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td class="py-1">
-                            <input class="checkbox" type="checkbox">
-                          </td>
-                          <td>
-                            Meja Kantor
-                          </td>
-                          <td>
-                            112233
-                          </td>
-                          <td>
-                            Furniture
-                          </td>
-                          <td>
-                            10
-                          </td>
-                          <td>
-                        <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>
-                        <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>
-                        <button type="button" class="btn btn-danger btn-rounded btn-icon">
+<!--                        <tr>-->
+<!--                          <td class="py-1">-->
+<!--                            <input class="checkbox" type="checkbox">-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Meja Kantor-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            112233-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Furniture-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            10-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                        <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>-->
+<!--                        <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>-->
+<!--                        <button type="button" class="btn btn-danger btn-rounded btn-icon">-->
+<!--                          <i class="mdi mdi-account-remove"></i>-->
+<!--                        </button>-->
+<!--                          </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                          <td class="py-1">-->
+<!--                            <input class="checkbox" type="checkbox">-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Rice Cooker-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            112234-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Elektronik-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            20-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                        <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>-->
+<!--                        <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>-->
+<!--                        <button type="button" class="btn btn-danger btn-rounded btn-icon">-->
+<!--                          <i class="mdi mdi-account-remove"></i>-->
+<!--                        </button>-->
+<!--                          </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                          <td class="py-1">-->
+<!--                            <input class="checkbox" type="checkbox">-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Rak Piring-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            112235-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Peralatan Dapur-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            10-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                        <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>-->
+<!--                        <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>-->
+<!--                        <button type="button" class="btn btn-danger btn-rounded btn-icon">-->
+<!--                          <i class="mdi mdi-account-remove"></i>-->
+<!--                        </button>-->
+<!--                          </td>-->
+<!--                        </tr>-->
+                      <tr th:each="product : ${listProducts}">
+                        <td><input class="checkbox" type="checkbox"></td>
+                        <td th:text="${product.productName}">Name</td>
+                        <td th:text="${product.productNo}">Product ID</td>
+                        <td th:text="${product.productCategory}">Brand</td>
+                        <td th:text="${product.productStock}">Made in</td>
+                        <td>
+
+                        <a type="button" class="btn btn-success btn-rounded btn-fw">View</a>
+                        <a type="button" class="btn btn-info btn-rounded btn-fw" th:href="@{'/product/edit/' + ${product.productNo}}">Edit</a>
+                          <a type="button" class="btn btn-danger btn-rounded btn-icon" th:href="@{'/product/delete/' + ${product.productNo}}">
                           <i class="mdi mdi-account-remove"></i>
-                        </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <input class="checkbox" type="checkbox">
-                          </td>
-                          <td>
-                            Rice Cooker
-                          </td>
-                          <td>
-                            112234
-                          </td>
-                          <td>
-                            Elektronik
-                          </td>
-                          <td>
-                            20
-                          </td>
-                          <td>
-                        <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>
-                        <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>
-                        <button type="button" class="btn btn-danger btn-rounded btn-icon">
-                          <i class="mdi mdi-account-remove"></i>
-                        </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <input class="checkbox" type="checkbox">
-                          </td>
-                          <td>
-                            Rak Piring
-                          </td>
-                          <td>
-                            112235
-                          </td>
-                          <td>
-                            Peralatan Dapur
-                          </td>
-                          <td>
-                            10
-                          </td>
-                          <td>
-                        <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>
-                        <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>
-                        <button type="button" class="btn btn-danger btn-rounded btn-icon">
-                          <i class="mdi mdi-account-remove"></i>
-                        </button>
-                          </td>
-                        </tr>
+                          </a>
+                        </td>
+                      </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
             </div>
-        <div class="col-12 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Form Add Product</h4>
-              <p class="card-description">
-                <!-- Basic form elements -->
-              </p>
-              <form class="forms-sample">
-                <div class="form-group">
-                  <label for="exampleInputName1">Product Name</label>
-                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Product Name">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputName1">Product No</label>
-                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Product No">
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect3">Category</label>
-                  <select class="form-control form-control-sm" id="exampleFormControlSelect3">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputName1">Stock</label>
-                  <input type="number" class="form-control" id="exampleInputName1" placeholder="Stock">
-                </div>
-                <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                <button class="btn btn-light">Cancel</button>
-              </form>
-            </div>
-          </div>
-        </div>
+<!--        <div class="col-12 grid-margin stretch-card">-->
+<!--          <div class="card">-->
+<!--            <div class="card-body">-->
+<!--              <h4 class="card-title">Form Add Product</h4>-->
+<!--              <p class="card-description">-->
+<!--                &lt;!&ndash; Basic form elements &ndash;&gt;-->
+<!--              </p>-->
+<!--              <form class="forms-sample">-->
+<!--                <div class="form-group">-->
+<!--                  <label for="exampleInputName1">Product Name</label>-->
+<!--                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Product Name">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                  <label for="exampleInputName1">Product No</label>-->
+<!--                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Product No">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                  <label for="exampleFormControlSelect3">Category</label>-->
+<!--                  <select class="form-control form-control-sm" id="exampleFormControlSelect3">-->
+<!--                    <option>1</option>-->
+<!--                    <option>2</option>-->
+<!--                    <option>3</option>-->
+<!--                    <option>4</option>-->
+<!--                    <option>5</option>-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                  <label for="exampleInputName1">Stock</label>-->
+<!--                  <input type="number" class="form-control" id="exampleInputName1" placeholder="Stock">-->
+<!--                </div>-->
+<!--                <button type="submit" class="btn btn-primary mr-2">Submit</button>-->
+<!--                <button class="btn btn-light">Cancel</button>-->
+<!--              </form>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
       </div>
     </div>
         <!-- content-wrapper ends -->

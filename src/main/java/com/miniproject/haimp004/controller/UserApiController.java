@@ -30,7 +30,6 @@ public class UserApiController {
 
         User user = new User();
         model.addAttribute("user", user);
-
         model.addAttribute("message", userAuth.getUsername());
 
         return "list_user_page";

@@ -1,23 +1,24 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="../width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Skydash Admin</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="vendors/feather/feather.css">
-  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../vendors/feather/feather.css">
+  <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="../images/favicon.png" />
 </head>
 
 <body>
@@ -25,8 +26,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="homepage.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="homepage.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="homepage.html"><img src="../images/logo.svg" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="homepage.html"><img src="../images/logo-mini.svg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -95,7 +96,7 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face28.jpg" alt="profile"/>
+              <img src="../images/faces/face28.jpg" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
@@ -334,6 +335,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">User List</h4>
+                  <a class="btn btn-light" href="/user/new">Add User</a>
                   <p class="card-description">
                     <!-- Add class <code>.table-striped</code> -->
                   </p>
@@ -356,58 +358,74 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td class="py-1">
-                            <input class="checkbox" type="checkbox">
-                          </td>
+<!--                        <tr>-->
+<!--                          <td class="py-1">-->
+<!--                            <input class="checkbox" type="checkbox">-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Felix-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                              felix@gmail.com-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                        <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>-->
+<!--                        <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>-->
+<!--                        <button type="button" class="btn btn-danger btn-rounded btn-icon">-->
+<!--                          <i class="mdi mdi-account-remove"></i>-->
+<!--                        </button>-->
+<!--                          </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                          <td class="py-1">-->
+<!--                            <input class="checkbox" type="checkbox">-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Faiz-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                              faiz@gmail.com-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>-->
+<!--                            <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>-->
+<!--                            <button type="button" class="btn btn-danger btn-rounded btn-icon">-->
+<!--                              <i class="mdi mdi-account-remove"></i>-->
+<!--                            </button>-->
+<!--                          </td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                          <td class="py-1">-->
+<!--                            <input class="checkbox" type="checkbox">-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            Ilyas-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                              ilyas@gmail.com-->
+<!--                          </td>-->
+<!--                          <td>-->
+<!--                            <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>-->
+<!--                            <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>-->
+<!--                            <button type="button" class="btn btn-danger btn-rounded btn-icon">-->
+<!--                              <i class="mdi mdi-account-remove"></i>-->
+<!--                            </button>-->
+<!--                          </td>-->
+<!--                        </tr>-->
+                        <tr th:each="users : ${listUser}">
+                          <td><input class="checkbox" type="checkbox"></td>
+                          <td th:text="${users.name}">Name</td>
+                          <td th:text="${users.userName}">UserName</td>
+                          <td th:text="${users.email}">Email</td>
                           <td>
-                            Felix
-                          </td>
-                          <td>
-                              felix@gmail.com
-                          </td>
-                          <td>
-                        <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>
-                        <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>
-                        <button type="button" class="btn btn-danger btn-rounded btn-icon">
-                          <i class="mdi mdi-account-remove"></i>
-                        </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <input class="checkbox" type="checkbox">
-                          </td>
-                          <td>
-                            Faiz
-                          </td>
-                          <td>
-                              faiz@gmail.com
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>
-                            <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>
-                            <button type="button" class="btn btn-danger btn-rounded btn-icon">
+                            <a type="button" class="btn btn-success btn-rounded btn-fw">View</a>
+                            <a type="button" class="btn btn-info btn-rounded btn-fw" th:href="@{'/user/edit/' + ${users.id}}">Edit</a>
+                            <a type="button" class="btn btn-danger btn-rounded btn-icon" th:href="@{'/user/delete/' + ${users.id}}">
                               <i class="mdi mdi-account-remove"></i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <input class="checkbox" type="checkbox">
-                          </td>
-                          <td>
-                            Ilyas
-                          </td>
-                          <td>
-                              ilyas@gmail.com
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-rounded btn-fw">View</button>
-                            <button type="button" class="btn btn-info btn-rounded btn-fw">Edit</button>
-                            <button type="button" class="btn btn-danger btn-rounded btn-icon">
-                              <i class="mdi mdi-account-remove"></i>
-                            </button>
+                            </a>
+<!--                            <a th:href="@{'/user/edit/' + ${users.id}}">Edit</a>-->
+                            &nbsp;&nbsp;&nbsp;
+<!--                            <a th:href="@{'/user/delete/' + ${users.id}}">Delete</a>-->
                           </td>
                         </tr>
                       </tbody>
@@ -416,33 +434,6 @@
                 </div>
               </div>
             </div>
-        <div class="col-12 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Form Add User</h4>
-              <p class="card-description">
-                <!-- Basic form elements -->
-              </p>
-              <form class="forms-sample">
-                <div class="form-group">
-                  <label for="exampleInputName1">Name</label>
-                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail3">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword4">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                <button class="btn btn-light">Cancel</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -460,16 +451,16 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <script src="../vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="js/off-canvas.js"></script>
-  <script src="js/hoverable-collapse.js"></script>
-  <script src="js/template.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/todolist.js"></script>
+  <script src="../js/off-canvas.js"></script>
+  <script src="../js/hoverable-collapse.js"></script>
+  <script src="../js/template.js"></script>
+  <script src="../js/settings.js"></script>
+  <script src="../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->

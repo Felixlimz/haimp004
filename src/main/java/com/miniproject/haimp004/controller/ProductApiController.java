@@ -48,7 +48,7 @@ public class ProductApiController {
         System.out.println(product);
         System.out.println("SUKSES");
 
-        return "redirect:/";
+        return "redirect:/product";
     }
 
     @RequestMapping("/edit/{id}")
@@ -79,7 +79,7 @@ public class ProductApiController {
     @RequestMapping("/delete/{id}")
     public String deleteProductAction(@PathVariable(name = "id") int id){
         productService.deleteProduct(id);
-        return "redirect:/";
+        return "redirect:/product";
     }
 
     @RequestMapping("/detail/{id}")

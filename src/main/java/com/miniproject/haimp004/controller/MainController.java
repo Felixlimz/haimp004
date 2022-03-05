@@ -1,9 +1,12 @@
 package com.miniproject.haimp004.controller;
 
 import com.miniproject.haimp004.data.Category;
+import com.miniproject.haimp004.data.Product;
 import com.miniproject.haimp004.data.User;
 import com.miniproject.haimp004.repository.UserRepository;
 import com.miniproject.haimp004.service.CategoryService;
+import com.miniproject.haimp004.service.ProductService;
+import com.miniproject.haimp004.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +23,12 @@ public class MainController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model, String error, String logout){
@@ -39,6 +48,9 @@ public class MainController {
 
     @RequestMapping(value = "/product", method = RequestMethod.GET)
     public String productPage(Model model, String error, String logout){
+        List<Product> listProduct = productService.listAll();
+        model.addAttribute("listProducts", listProduct);
+
         return "product";
     }
 
@@ -53,9 +65,15 @@ public class MainController {
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String userPage(Model model, String error, String logout){
+//        List<User> listUser = userService.listAll();
+//        model.addAttribute("listUser", listUser);
+//
+//        User user = new User();
+//        model.addAttribute("user", user);
 
         return "user";
     }
+
     @Autowired
     private UserRepository userRepository;
 
