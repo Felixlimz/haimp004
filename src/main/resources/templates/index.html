@@ -1,108 +1,115 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover">
-	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
 
-	<!-- Page Title -->
-	<title>BCA</title>
+    <!-- Page Title -->
+    <title>Toshokan</title>
 
-	<!-- Compressed Styles -->
-	<link href="css/slides.min.css?41331" rel="stylesheet" type="text/css">
+    <!-- Compressed Styles -->
+    <link href="css/slides.min.css?41331" rel="stylesheet" type="text/css">
 
-	<!-- Custom Styles -->
-	<!-- <link href="css/custom.css" rel="stylesheet" type="text/css"> -->
+    <!-- Custom Styles -->
+    <!-- <link href="css/custom.css" rel="stylesheet" type="text/css"> -->
 
-	<!-- jQuery 3.3.1 -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- jQuery 3.3.1 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	<!-- Compressed Scripts -->
-	<script src="js/slides.min.js?41331" type="text/javascript"></script>
+    <!-- Compressed Scripts -->
+    <script src="js/slides.min.js?41331" type="text/javascript"></script>
 
-	<!-- Custom Scripts -->
-	<!-- <script src="js/custom.js" type="text/javascript"></script> -->
+    <!-- Custom Scripts -->
+    <!-- <script src="js/custom.js" type="text/javascript"></script> -->
 
-	<!-- Fonts and Material Icons -->
-	<link rel="stylesheet" as="font" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,600,700|Material+Icons"/>
- 
+    <!-- Fonts and Material Icons -->
+    <link rel="stylesheet" as="font"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,600,700|Material+Icons"/>
+
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}"/>
+
 </head>
 <body class="slides chain simplifiedMobile animated">
 
 <!-- Panel Top #08 -->
 <nav class="panel top">
-  <div class="sections desktop">
-    <div class="left"><a href="#" title="Slides Framework"><img th:src="@{/images/logo.svg}" class="mr-2"
-                                                                alt="logo"></a></div>
-    <div class="center">
+    <div class="sections desktop">
+        <div class="left"><a href="#" title="Slides Framework"><img th:src="@{/images/logo.svg}" class="mr-2"
+                                                                    alt="logo"></a></div>
+        <div class="center">
+        </div>
+        <div class="right">
+            <ul class="menu trim">
+                <li><a href="#" class="popupTrigger" data-popup-id="89-3">Login</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="right">
-      <ul class="menu trim">
-        <li><a href="#" class="popupTrigger" data-popup-id="89-3">Login</a></li>
-      </ul>
+    <div class="sections compact hidden">
+        <div class="left"><a href="#" title="Slides Framework"><img th:src="@{/images/logo.svg}" class="mr-2"
+                                                                    alt="logo"></a></div>
+        <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use
+                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
     </div>
-  </div>
-  <div class="sections compact hidden">
-    <div class="left"><a href="#" title="Slides Framework"><img th:src="@{/images/logo.svg}" class="mr-2"
-                                                                alt="logo"></a></div>
-    <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
-  </div>
 </nav>
 
 <!-- Slide 1 (#09) -->
 <section class="slide fade-6 kenBurns">
-  <div class="content">
-    <div class="container">
-      <div class="wrap">
+    <div class="content">
+        <div class="container">
+            <div class="wrap">
 
-        <div class="fix-12-12">
-          <div class="fix-3-12">
-            <h1><b>BCA</b></h1>
-          </div>
-          <p class="ae-3"><span class="opacity-8">The whole <b>Library</b> is in your <b>Hand</b></span></p>
-          <div th:if="${param.error}">
-            <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
-          </div>
+                <div class="fix-12-12">
+                    <p class="ae-3"><span class="opacity-8">The whole <b>Library</b> is in your <b>Hand</b></span></p>
+                    <div th:if="${param.error}">
+                        <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+                    </div>
 
-          <div th:if="${param.logout}">
-            <p class="text-warning">You have been logged out.</p>
-          </div>
-          <form class="slides-form" action="#" autocomplete="off">
-            <input type="text" class="input-9 ae-3 fromCenter" name="user-name" placeholder="Fullname" val=""/>
-            <input type="email" class="input-9 ae-4 fromCenter" name="user-email" placeholder="Email" val=""/>
-            <input type="password" class="input-9 ae-5 fromCenter" name="user-password" placeholder="Password" val=""/>
-            <input type="password" class="input-9 ae-6 fromCenter" name="confirm-password" placeholder="Confirm the password" val=""/>
-            <button type="submit" class="button blue gradient ae-7 fromCenter" name="button">Get Started</button>
-          </form>
+                    <div th:if="${param.logout}">
+                        <p class="text-warning">You have been logged out.</p>
+                    </div>
+                    <form class="slides-form" action="#" autocomplete="off">
+                        <input type="text" class="input-9 ae-3 fromCenter" name="user-name" placeholder="Fullname"
+                               val=""/>
+                        <input type="email" class="input-9 ae-4 fromCenter" name="user-email" placeholder="Email"
+                               val=""/>
+                        <input type="password" class="input-9 ae-5 fromCenter" name="user-password"
+                               placeholder="Password" val=""/>
+                        <input type="password" class="input-9 ae-6 fromCenter" name="confirm-password"
+                               placeholder="Confirm the password" val=""/>
+                        <button type="submit" class="button blue gradient ae-7 fromCenter" name="button">Get Started
+                        </button>
+                    </form>
+                </div>
+
+            </div>
         </div>
-
-      </div>
     </div>
-  </div>
-  <div class="background" style="background-image:url(assets/img/background/img-09.jpg)"></div>
+    <div class="background" style="background-image:url(assets/img/background/img-09.jpg)"></div>
 </section>
 
 <!-- Popup Video -->
 <div class="popup autoplay" data-popup-id="89-3">
-  <!-- <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div> -->
-  <div class="content">
-    <div class="container">
-      <div class="wrap">
-        <div class="fix-10-12">
-          <p class=""><span class="opacity-8">Login</span></p>
-          <form class="slides-form" th:action="@{/login}" method="post">
-            <input type="email" class="input-9 fromCenter" name="email" placeholder="Email" val=""/>
-            <input type="password" class="input-9 fromCenter" name="password" placeholder="Password" val=""/>
-            <button type="submit" class="button blue gradient fromCenter" name="button">Login</button>
-          </form>
-          <!-- <div class="embedVideo popupContent">
-            <iframe src="https://www.youtube.com/embed/g8yBqxTiHSs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div> -->
+    <!-- <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div> -->
+    <div class="content">
+        <div class="container">
+            <div class="wrap">
+                <div class="fix-10-12">
+                    <p class=""><span class="opacity-8">Login</span></p>
+                    <form class="slides-form" th:action="@{/login}" method="post">
+                        <input type="email" class="input-9 fromCenter" name="email" placeholder="Email" val=""/>
+                        <input type="password" class="input-9 fromCenter" name="password" placeholder="Password"
+                               val=""/>
+                        <button type="submit" class="button blue gradient fromCenter" name="button">Login</button>
+                    </form>
+                    <!-- <div class="embedVideo popupContent">
+                      <iframe src="https://www.youtube.com/embed/g8yBqxTiHSs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div> -->
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
-		
+
 </body>
 </html>
