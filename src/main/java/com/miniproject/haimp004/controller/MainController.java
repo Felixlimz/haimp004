@@ -6,6 +6,7 @@ import com.miniproject.haimp004.data.Product;
 import com.miniproject.haimp004.data.User;
 import com.miniproject.haimp004.repository.UserRepository;
 import com.miniproject.haimp004.service.CategoryService;
+import com.miniproject.haimp004.service.LiveWeatherService;
 import com.miniproject.haimp004.service.ProductService;
 import com.miniproject.haimp004.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,13 @@ public class MainController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private LiveWeatherService liveWeatherService;
+
+    public MainController(LiveWeatherService liveWeatherService) {
+        this.liveWeatherService = liveWeatherService;
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model, String error, String logout){
         if (error != null)
@@ -43,6 +51,8 @@ public class MainController {
     @RequestMapping(value = "/homepage", method = RequestMethod.GET)
     public String homePage(Model model, @AuthenticationPrincipal CustomUserDetails userAuth){
         model.addAttribute("message", userAuth.getUsername());
+
+        model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather("Jakarta", "id"));
 
         return "homepage";
     }
