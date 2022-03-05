@@ -33,4 +33,8 @@ public class UserService {
     public User getUserByName(String name){
         return userRepository.findByName(name);
     }
+
+    public Integer countUser(){
+        return userRepository.countUser();
+    }
 }

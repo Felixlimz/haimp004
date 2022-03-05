@@ -31,4 +31,8 @@ public class ProductService {
     public void deleteProduct(Integer id){
         productRepository.deleteById(id);
     }
+
+    public Integer countProduct(){
+        return productRepository.countProduct();
+    }
 }

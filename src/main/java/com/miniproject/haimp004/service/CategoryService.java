@@ -31,4 +31,7 @@ public class CategoryService {
         categoryRepository.deleteById(id);
     }
 
+    public Integer countCategory(){
+        return categoryRepository.countCategory();
+    }
 }

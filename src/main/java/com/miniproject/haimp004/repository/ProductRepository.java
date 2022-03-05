@@ -11,4 +11,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query(value = "SELECT * FROM product p WHERE p.productName LIKE %:keyword%", nativeQuery = true)
     List<Product> findProductByKeyword(@Param("keyword") String keyword);
+
+    @Query(value = "SELECT count(*) FROM product", nativeQuery = true)
+    Integer countProduct();
 }

@@ -53,7 +53,9 @@ public class MainController {
         model.addAttribute("message", userAuth.getUsername());
 
         model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather("Jakarta", "id"));
-
+        model.addAttribute("countUser", userService.countUser());
+        model.addAttribute("countProduct", productService.countProduct());
+        model.addAttribute("countCategory", categoryService.countCategory());
         return "homepage";
     }
 
