@@ -1,6 +1,7 @@
 package com.miniproject.haimp004.controller;
 
 import com.miniproject.haimp004.data.Category;
+import com.miniproject.haimp004.data.CustomUserDetails;
 import com.miniproject.haimp004.data.Product;
 import com.miniproject.haimp004.data.User;
 import com.miniproject.haimp004.repository.UserRepository;
@@ -8,6 +9,7 @@ import com.miniproject.haimp004.service.CategoryService;
 import com.miniproject.haimp004.service.ProductService;
 import com.miniproject.haimp004.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +41,9 @@ public class MainController {
     }
 
     @RequestMapping(value = "/homepage", method = RequestMethod.GET)
-    public String homePage(Model model, String error, String logout){
+    public String homePage(Model model, @AuthenticationPrincipal CustomUserDetails userAuth){
+        model.addAttribute("message", userAuth.getUsername());
+
         return "homepage";
     }
 
