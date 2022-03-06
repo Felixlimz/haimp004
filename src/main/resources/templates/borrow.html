@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Product Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>Product List</h1>
+    <a href="new">Create New Product</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Borrow ID</th>
+            <th>UserName</th>
+            <th>Borrower Email</th>
+            <th>Book Title</th>
+            <th>Borrow Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="borrow : ${listBorrow}">
+            <td th:text="${borrow.id}">Borrow ID</td>
+            <td th:text="${borrow.userName}">UserName</td>
+            <td th:text="${borrow.userEmail}">Borrower Email</td>
+            <td th:text="${borrow.bookName}">Book Title</td>
+            <td th:text="${borrow.borrowDate}">Borrow Date</td>
+            <td>
+                <a th:href="@{'/borrow/delete/' + ${borrow.id}}">Kembalikan Buku</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

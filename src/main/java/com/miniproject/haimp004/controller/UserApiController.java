@@ -23,17 +23,13 @@ public class UserApiController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/list")
-    public  String viewListUser(Model model, @AuthenticationPrincipal CustomUserDetails userAuth){
-        List<User> listUser = userService.listAll();
-        model.addAttribute("listUser", listUser);
-
-        User user = new User();
-        model.addAttribute("user", user);
-        model.addAttribute("message", userAuth.getUsername());
-
-        return "user";
-    }
+//    @RequestMapping("/list")
+//    public  String viewListUser(Model model){
+//        List<User> listUser = userService.listAll();
+//        model.addAttribute("listUser", listUser);
+//
+//        return "user";
+//    }
 
     @RequestMapping("/new")
     public ModelAndView viewAddNewCategory(){

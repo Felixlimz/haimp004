@@ -13,37 +13,20 @@ import java.util.List;
 @Controller
 @RequestMapping(path = "/category")
 public class CategoryApiController {
-//    @Autowired
-//    private CategoryRepository categoryRepository;
-//
-//    @PostMapping(path = "/add")
-//    public @ResponseBody String addNewCategory (@RequestParam String name, @RequestParam String detail){
-//        Category newCategory = new Category();
-//        newCategory.setNameCategory(name);
-//        newCategory.setDetailCategory(detail);
-//        categoryRepository.save(newCategory);
-//        return "Saved";
-//    }
-//
-//    @GetMapping(path = "/all")
-//    public @ResponseBody Iterable<Category> getAllCategory(){
-//        return categoryRepository.findAll();
-//    }
-
     @Autowired
     private CategoryService categoryService;
 
 
-    @RequestMapping("/list")
-    public  String viewListCategory(Model model){
-        List<Category> listCategory = categoryService.listAll();
-        model.addAttribute("listCategory", listCategory);
-
-        Category category = new Category();
-        model.addAttribute("category", category);
-
-        return "category";
-     }
+//    @RequestMapping("/list")
+//    public  String viewListCategory(Model model){
+//        List<Category> listCategory = categoryService.listAll();
+//        model.addAttribute("listCategory", listCategory);
+//
+//        Category category = new Category();
+//        model.addAttribute("category", category);
+//
+//        return "category";
+//     }
 
     @RequestMapping("/new")
     public ModelAndView viewAddNewCategory(){

@@ -1,15 +1,14 @@
 package com.miniproject.haimp004.controller;
 
 
-import com.miniproject.haimp004.data.BorrowTransaction;
-import com.miniproject.haimp004.data.Category;
-import com.miniproject.haimp004.data.Product;
-import com.miniproject.haimp004.data.User;
+import com.miniproject.haimp004.data.*;
 import com.miniproject.haimp004.service.BorrowTransactionService;
 import com.miniproject.haimp004.service.ProductService;
 import com.miniproject.haimp004.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +29,16 @@ public class BorrowController {
 
     @Autowired
     private BorrowTransactionService borrowTransactionService;
+
+    @RequestMapping("/list")
+    public  String viewListBorrow(Model model){
+        List<BorrowTransaction> listBorrowTransaction = borrowTransactionService.listAll();
+        model.addAttribute("listBorrow", listBorrowTransaction);
+
+        return "borrow";
+    }
+
+
 
     @RequestMapping(path = "/add/{productid}")
     public ModelAndView viewAddBorrow(@PathVariable(name = "productid") int productId){
@@ -56,6 +65,12 @@ public class BorrowController {
         borrowTransaction.setBorrowDate(Calendar.getInstance().getTime());
         borrowTransactionService.save(borrowTransaction);
         return "redirect:/product";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteBorrow(@PathVariable(name = "id") int id){
+        borrowTransactionService.delete(id);
+        return "redirect:/borrow";
     }
 
 }

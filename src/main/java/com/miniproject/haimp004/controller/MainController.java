@@ -2,10 +2,7 @@ package com.miniproject.haimp004.controller;
 
 import com.miniproject.haimp004.data.*;
 import com.miniproject.haimp004.repository.UserRepository;
-import com.miniproject.haimp004.service.CategoryService;
-import com.miniproject.haimp004.service.LiveWeatherService;
-import com.miniproject.haimp004.service.ProductService;
-import com.miniproject.haimp004.service.UserService;
+import com.miniproject.haimp004.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,6 +28,9 @@ public class MainController {
 
     @Autowired
     private LiveWeatherService liveWeatherService;
+
+    @Autowired
+    private BorrowTransactionService borrowTransactionService;
 
     public MainController(LiveWeatherService liveWeatherService) {
         this.liveWeatherService = liveWeatherService;
@@ -88,8 +88,13 @@ public class MainController {
         return "user";
     }
 
-    @Autowired
-    private UserRepository userRepository;
+    @RequestMapping("/borrow")
+    public  String viewListBorrow(Model model){
+        List<BorrowTransaction> listBorrowTransaction = borrowTransactionService.listAll();
+        model.addAttribute("listBorrow", listBorrowTransaction);
+
+        return "borrow";
+    }
 
     @GetMapping(path = "/init")
     public String initProcess(){
@@ -98,9 +103,8 @@ public class MainController {
         user.setPassword("password");
         user.setEmail("felixlim@gmail.com");
         user.setName("Felix Lim");
-        userRepository.save(user);
+        userService.save(user);
         return "SAVED";
-
     }
 
     @GetMapping(path = "/editpassword")
@@ -119,7 +123,7 @@ public class MainController {
         System.out.println("ohoi");
         System.out.println(newPassword.getNewPassword());
         user.setPassword(newPassword.getNewPassword());
-        userRepository.save(user);
+        userService.save(user);
 
         return "redirect:/homepage";
     }

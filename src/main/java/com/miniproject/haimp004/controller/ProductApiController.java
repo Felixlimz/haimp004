@@ -15,20 +15,19 @@ import java.util.List;
 @Controller
 @RequestMapping(path = "/product")
 public class ProductApiController {
-
     @Autowired
     private ProductService productService;
 
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping("/list")
-    public String viewListProduct(Model model){
-        List<Product> listProduct = productService.listAll();
-        model.addAttribute("listProducts", listProduct);
-
-        return "list_product_page";
-    }
+//    @RequestMapping("/list")
+//    public String viewListProduct(Model model){
+//        List<Product> listProduct = productService.listAll();
+//        model.addAttribute("listProducts", listProduct);
+//
+//        return "list_product_page";
+//    }
 
     @RequestMapping("/new")
     public String viewAddNewProduct(Model model){
