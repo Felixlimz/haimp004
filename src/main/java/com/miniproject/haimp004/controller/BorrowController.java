@@ -9,6 +9,7 @@ import com.miniproject.haimp004.service.BorrowTransactionService;
 import com.miniproject.haimp004.service.ProductService;
 import com.miniproject.haimp004.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Calendar;
 import java.util.List;
 
+
+@Controller
 @RequestMapping(path = "/borrow")
 public class BorrowController {
     @Autowired
@@ -39,7 +42,7 @@ public class BorrowController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/add/{productid}/{userid}", method = RequestMethod.POST)
+    @RequestMapping(value = "/add/{productid}/{userid}")
     public String saveBorrow(@PathVariable(name = "productid") int productId, @PathVariable(name = "userid") int userId){
         User user = userService.get(userId);
         Product product = productService.get(productId);

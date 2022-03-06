@@ -38,6 +38,9 @@
                 <td>Stock:</td>
                 <td><input type="text" th:field="*{productStock}" /></td>
             </tr>
+            <tr>
+                <a th:href="@{'/borrow/add/' + ${product.productNo}}">Mau Pinjam</a>
+            </tr>
         </table>
         <img th:src="*{imageLink}" alt="W3Schools.com">
     </form>
