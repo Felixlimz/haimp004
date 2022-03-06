@@ -13,7 +13,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query(value = "SELECT * FROM user u WHERE u.userName LIKE %:keyword%", nativeQuery = true)
     List<User> findUserByKeyword(@Param("keyword") String keyword);
 
-    @Query("SELECT u FROM User u WHERE u.email = ?1")
+    @Query("SELECT u FROM User u WHERE u.email = ?1 OR u.userName = ?1")
     public User findByEmail(String email);
 
     @Query("SELECT u FROM User u WHERE u.name = ?1")

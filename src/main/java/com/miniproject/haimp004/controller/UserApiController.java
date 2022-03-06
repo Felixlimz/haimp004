@@ -36,10 +36,10 @@ public class UserApiController {
     }
 
     @RequestMapping("/new")
-    public ModelAndView viewAddNewCategory(Model model){
+    public ModelAndView viewAddNewCategory(){
         ModelAndView modelAndView = new ModelAndView("new_user_page");
         User user = new User();
-        model.addAttribute("user", user);
+        modelAndView.addObject("user", user);
 
         return modelAndView;
     }
@@ -50,7 +50,6 @@ public class UserApiController {
         if(userService.getUserByName(user.getName()) != null){
             defaultPassword = userService.getUserByName(user.getName()).getPassword();
         }
-        System.out.println(defaultPassword);
         user.setPassword(defaultPassword);
         userService.save(user);
         System.out.println(user);

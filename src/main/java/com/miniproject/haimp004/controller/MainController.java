@@ -1,9 +1,6 @@
 package com.miniproject.haimp004.controller;
 
-import com.miniproject.haimp004.data.Category;
-import com.miniproject.haimp004.data.CustomUserDetails;
-import com.miniproject.haimp004.data.Product;
-import com.miniproject.haimp004.data.User;
+import com.miniproject.haimp004.data.*;
 import com.miniproject.haimp004.repository.UserRepository;
 import com.miniproject.haimp004.service.CategoryService;
 import com.miniproject.haimp004.service.LiveWeatherService;
@@ -14,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -50,7 +48,9 @@ public class MainController {
 
     @RequestMapping(value = "/homepage", method = RequestMethod.GET)
     public String homePage(Model model, @AuthenticationPrincipal CustomUserDetails userAuth){
-        model.addAttribute("message", userAuth.getUsername());
+        String email = userAuth.getUsername();
+        User user = userService.getUserByEmail(email);
+        model.addAttribute("message", user.getName());
 
         model.addAttribute("currentWeather", liveWeatherService.getCurrentWeather("Jakarta", "id"));
         model.addAttribute("countUser", userService.countUser());
@@ -100,5 +100,26 @@ public class MainController {
         userRepository.save(user);
         return "SAVED";
 
+    }
+
+    @GetMapping(path = "/editpassword")
+    public ModelAndView editPassword(){
+        ModelAndView modelAndView = new ModelAndView("edit_password");
+        System.out.println("ahai");
+        NewPassword newPassword = new NewPassword();
+        modelAndView.addObject("newpassword", newPassword);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/editpassword/save", method = RequestMethod.POST)
+    public String saveNewPassword(@ModelAttribute(name = "newpassword") NewPassword newPassword, @AuthenticationPrincipal CustomUserDetails userAuth){
+        String email = userAuth.getUsername();
+        User user = userService.getUserByEmail(email);
+        System.out.println("ohoi");
+        System.out.println(newPassword.getNewPassword());
+        user.setPassword(newPassword.getNewPassword());
+        userRepository.save(user);
+
+        return "redirect:/homepage";
     }
 }

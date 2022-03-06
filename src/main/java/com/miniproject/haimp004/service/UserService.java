@@ -34,6 +34,10 @@ public class UserService {
         return userRepository.findByName(name);
     }
 
+    public User getUserByEmail(String email){
+        return userRepository.findByEmail(email);
+    }
+
     public Integer countUser(){
         return userRepository.countUser();
     }

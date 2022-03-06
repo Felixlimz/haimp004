@@ -46,10 +46,10 @@ public class CategoryApiController {
      }
 
     @RequestMapping("/new")
-    public ModelAndView viewAddNewCategory(Model model){
+    public ModelAndView viewAddNewCategory(){
         ModelAndView modelAndView = new ModelAndView("new_category_page");
         Category category = new Category();
-        model.addAttribute("category", category);
+        modelAndView.addObject("category", category);
 
         return modelAndView;
     }
