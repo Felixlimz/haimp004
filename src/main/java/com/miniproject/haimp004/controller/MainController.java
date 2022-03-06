@@ -8,6 +8,7 @@ import com.miniproject.haimp004.service.ProductService;
 import com.miniproject.haimp004.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -121,5 +122,11 @@ public class MainController {
         userRepository.save(user);
 
         return "redirect:/homepage";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(){
+        SecurityContextHolder.getContext().setAuthentication(null);
+        return "redirect:/";
     }
 }
