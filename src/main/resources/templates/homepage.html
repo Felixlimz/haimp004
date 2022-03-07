@@ -7,30 +7,32 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Skydash Admin</title>
+  <title>Home | Toshokan</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="vendors/feather/feather.css">
-  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" th:href="@{/vendors/feather/feather.css}">
+  <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}">
+  <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.base.css}">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
-  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}">
+  <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}">
+  <link rel="stylesheet" type="@{text/css" th:href="@{/js/select.dataTables.min.css}">
+  <link rel="stylesheet" th:href="@{/vendors/mdi/css/materialdesignicons.min.css}">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" th:href="@{/images/favicon.png}"/>
 </head>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="homepage.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="homepage.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" th:href="@{homepage}"><img th:src="@{/images/logo.svg}" class="mr-2"
+                                                                          alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" th:href="@{homepage}"><img th:src="@{/images/logo-mini.svg}"
+                                                                          alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -99,7 +101,7 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face28.jpg" alt="profile"/>
+              <img th:src="@{/images/faces/face28.jpg}" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
@@ -239,7 +241,7 @@
             </div>
             <ul class="chat-list">
               <li class="list active">
-                <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img th:src="@{/images/faces/face1.jpg}" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Thomas Douglas</p>
                   <p>Available</p>
@@ -247,7 +249,7 @@
                 <small class="text-muted my-auto">19 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
+                <div class="profile"><img th:src="@{/images/faces/face2.jpg}" alt="image"><span class="offline"></span></div>
                 <div class="info">
                   <div class="wrapper d-flex">
                     <p>Catherine</p>
@@ -258,7 +260,7 @@
                 <small class="text-muted my-auto">23 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img th:src="@{/images/faces/face3.jpg}" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Daniel Russell</p>
                   <p>Available</p>
@@ -266,7 +268,7 @@
                 <small class="text-muted my-auto">14 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
+                <div class="profile"><img th:src="@{/images/faces/face4.jpg}" alt="image"><span class="offline"></span></div>
                 <div class="info">
                   <p>James Richardson</p>
                   <p>Away</p>
@@ -274,7 +276,7 @@
                 <small class="text-muted my-auto">2 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img th:src="@{/images/faces/face5.jpg}" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Madeline Kennedy</p>
                   <p>Available</p>
@@ -282,7 +284,7 @@
                 <small class="text-muted my-auto">5 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img th:src="@{/images/faces/face6.jpg}" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Sarah Graves</p>
                   <p>Available</p>
@@ -299,31 +301,37 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="homepage">
+            <a class="nav-link" th:href="@{/homepage}">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="product">
+            <a class="nav-link" th:href="@{/borrow}">
+              <i class="icon-book menu-icon"></i>
+              <span class="menu-title">Borrow List</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/product}">
               <i class="icon-box menu-icon"></i>
               <span class="menu-title">Product</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="category">
+            <a class="nav-link" th:href="@{/category}">
               <i class="icon-clipboard menu-icon"></i>
               <span class="menu-title">Product Category</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="user">
+            <a class="nav-link" th:href="@{/user}">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">User</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="logout">
+            <a class="nav-link" href="#">
               <i class="ti-power-off menu-icon"></i>
               <span class="menu-title">Logout</span>
             </a>
@@ -340,21 +348,6 @@
                   <h3 class="font-weight-bold"> <span th:text="'Hello, ' + ${message}"></span></h3>
                   <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</span></h6>
                 </div>
-                <div class="col-12 col-xl-4">
-                 <div class="justify-content-end d-flex">
-                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                    <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                     <i class="mdi mdi-calendar"></i> Today (10 Jan 2021)
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
-                      <a class="dropdown-item" href="#">January - March</a>
-                      <a class="dropdown-item" href="#">March - June</a>
-                      <a class="dropdown-item" href="#">June - August</a>
-                      <a class="dropdown-item" href="#">August - November</a>
-                    </div>
-                  </div>
-                 </div>
-                </div>
               </div>
             </div>
           </div>
@@ -362,15 +355,16 @@
             <div class="col-md-6 grid-margin stretch-card">
               <div class="card tale-bg">
                 <div class="card-people mt-auto">
-                  <img src="images/dashboard/people.svg" alt="people">
+                  <img th:src="@{/images/dashboard/people.svg}" alt="people">
                   <div class="weather-info">
                     <div class="d-flex">
                       <div>
-                        <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
+                        <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>
+                          <p th:text="${currentWeather.temperature} + ' &#8457;'">Temperature</p></h2>
                       </div>
                       <div class="ml-2">
-                        <h4 class="location font-weight-normal">Bangalore</h4>
-                        <h6 class="font-weight-normal">India</h6>
+                        <h4 class="location font-weight-normal">Jakarta</h4>
+                        <h6 class="font-weight-normal">Indonesia</h6>
                       </div>
                     </div>
                   </div>
@@ -435,25 +429,25 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
-  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
-  <script src="vendors/chart.js/Chart.min.js"></script>
-  <script src="vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-  <script src="js/dataTables.select.min.js"></script>
+  <script th:src="@{/vendors/chart.js/Chart.min.js}"></script>
+  <script th:src="@{/vendors/datatables.net/jquery.dataTables.js}"></script>
+  <script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"></script>
+  <script th:src="@{/js/dataTables.select.min.js}"></script>
 
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="js/off-canvas.js"></script>
-  <script src="js/hoverable-collapse.js"></script>
-  <script src="js/template.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/todolist.js"></script>
+  <script th:src="@{/js/off-canvas.js}"></script>
+  <script th:src="@{/js/hoverable-collapse.js}"></script>
+  <script th:src="@{/js/template.js}"></script>
+  <script th:src="@{/js/settings.js}"></script>
+  <script th:src="@{/js/todolist.js}"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="js/dashboard.js"></script>
-  <script src="js/Chart.roundedBarCharts.js"></script>
+  <script th:src="@{/js/dashboard.js}"></script>
+  <script th:src="@{/js/Chart.roundedBarCharts.js}"></script>
   <!-- End custom js for this page-->
 </body>
 

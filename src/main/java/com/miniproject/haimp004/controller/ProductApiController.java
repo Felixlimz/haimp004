@@ -87,6 +87,22 @@ public class ProductApiController {
         Product product = productService.get(id);
         modelAndView.addObject("product", product);
 
+        List<Category> listCategory = categoryService.listAll();
+
+        Category temp = new Category();
+        for(Category category: listCategory){
+            if(category.getNameCategory().equals(product.getProductCategory())){
+                temp = category;
+            }
+        }
+        int itemPos = listCategory.indexOf(temp);
+        System.out.println(itemPos);
+        System.out.println(temp);
+        listCategory.remove(itemPos);
+        listCategory.add(0, temp);
+
+        modelAndView.addObject("listCategory", listCategory);
+
 
         return modelAndView;
     }
