@@ -3,6 +3,8 @@ package com.miniproject.haimp004.service;
 import com.miniproject.haimp004.data.BorrowTransaction;
 import com.miniproject.haimp004.repository.BorrowTransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,5 +38,9 @@ public class BorrowTransactionService {
 
     public List<BorrowTransaction> listWhoBorrowBook(Integer idBook){
         return borrowTransactionRepository.listWhoBorrowBook(idBook);
+    }
+
+    public Page<BorrowTransaction> listAllPaging(int page, int size){
+        return borrowTransactionRepository.findAll(PageRequest.of(page, size));
     }
 }

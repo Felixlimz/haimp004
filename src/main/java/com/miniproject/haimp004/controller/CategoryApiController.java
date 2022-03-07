@@ -1,8 +1,10 @@
 package com.miniproject.haimp004.controller;
 
 import com.miniproject.haimp004.data.Category;
+import com.miniproject.haimp004.data.User;
 import com.miniproject.haimp004.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -60,4 +62,11 @@ public class CategoryApiController {
         return "redirect:/category";
     }
 
+    @RequestMapping("/{page}/{size}")
+    public  String viewListCategoryPagination(Model model, @PathVariable int page, @PathVariable int size){
+        Page<Category> listCategory = categoryService.listAllPaging(page, size);
+        model.addAttribute("listCategory", listCategory);
+
+        return "list_category_page";
+    }
 }

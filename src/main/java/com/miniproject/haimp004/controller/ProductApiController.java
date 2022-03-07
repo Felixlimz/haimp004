@@ -5,6 +5,7 @@ import com.miniproject.haimp004.data.Product;
 import com.miniproject.haimp004.service.CategoryService;
 import com.miniproject.haimp004.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -107,4 +108,11 @@ public class ProductApiController {
         return modelAndView;
     }
 
+    @RequestMapping("/{page}/{size}")
+    public String viewListProductPagination(Model model, @PathVariable int page, @PathVariable int size){
+        Page<Product> listProduct = productService.listAllPaging(page, size);
+        model.addAttribute("listProducts", listProduct);
+
+        return "list_product_page";
+    }
 }

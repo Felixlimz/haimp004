@@ -5,6 +5,7 @@ import com.miniproject.haimp004.data.User;
 import com.miniproject.haimp004.service.CustomUserDetailService;
 import com.miniproject.haimp004.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -66,5 +67,13 @@ public class UserApiController {
     public String deleteUserAction(@PathVariable(name = "id") int id){
         userService.delete(id);
         return "redirect:/user";
+    }
+
+    @RequestMapping("/{page}/{size}")
+    public  String viewListUserPagination(Model model, @PathVariable int page, @PathVariable int size){
+        Page<User> listUser = userService.listAllPaging(page, size);
+        model.addAttribute("listUser", listUser);
+
+        return "list_user_page";
     }
 }

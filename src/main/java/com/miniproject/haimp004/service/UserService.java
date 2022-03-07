@@ -1,8 +1,11 @@
 package com.miniproject.haimp004.service;
 
+import com.miniproject.haimp004.data.Product;
 import com.miniproject.haimp004.data.User;
 import com.miniproject.haimp004.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -40,5 +43,9 @@ public class UserService {
 
     public Integer countUser(){
         return userRepository.countUser();
+    }
+
+    public Page<User> listAllPaging(int page, int size){
+        return userRepository.findAll(PageRequest.of(page, size));
     }
 }

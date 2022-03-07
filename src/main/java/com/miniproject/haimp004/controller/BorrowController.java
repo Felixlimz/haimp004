@@ -6,12 +6,11 @@ import com.miniproject.haimp004.service.BorrowTransactionService;
 import com.miniproject.haimp004.service.ProductService;
 import com.miniproject.haimp004.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Calendar;
@@ -71,6 +70,14 @@ public class BorrowController {
     public String deleteBorrow(@PathVariable(name = "id") int id){
         borrowTransactionService.delete(id);
         return "redirect:/borrow";
+    }
+
+    @RequestMapping("/{page}/{size}")
+    public  String viewListBorrowPagination(Model model, @PathVariable int page, @PathVariable int size){
+        Page<BorrowTransaction> listBorrowTransaction = borrowTransactionService.listAllPaging(size, page);
+        model.addAttribute("listBorrow", listBorrowTransaction);
+
+        return "borrow";
     }
 
 }

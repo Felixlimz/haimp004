@@ -3,6 +3,8 @@ package com.miniproject.haimp004.service;
 import com.miniproject.haimp004.data.Category;
 import com.miniproject.haimp004.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -33,5 +35,9 @@ public class CategoryService {
 
     public Integer countCategory(){
         return categoryRepository.countCategory();
+    }
+
+    public Page<Category> listAllPaging(int page, int size){
+        return categoryRepository.findAll(PageRequest.of(page, size));
     }
 }

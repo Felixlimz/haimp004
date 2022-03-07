@@ -1,7 +1,6 @@
 package com.miniproject.haimp004.controller;
 
 import com.miniproject.haimp004.data.*;
-import com.miniproject.haimp004.repository.UserRepository;
 import com.miniproject.haimp004.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
