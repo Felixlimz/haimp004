@@ -37,8 +37,8 @@
 <!-- Panel Top #08 -->
 <nav class="panel top">
     <div class="sections desktop">
-        <div class="left"><a href="#" title="Slides Framework"><img th:src="@{/images/logo.svg}" class="mr-2"
-                                                                    alt="logo"></a></div>
+        <div class="left">
+        </div>
         <div class="center">
         </div>
         <div class="right">
@@ -62,6 +62,10 @@
             <div class="wrap">
 
                 <div class="fix-12-12">
+                    <div class="ae-3">
+                        <a href="#" title="Slides Framework"><img th:src="@{/images/logo.svg}" class="mb-2"
+                                                                  alt="logo"></a>
+                    </div>
                     <p class="ae-3"><span class="opacity-8">The whole <b>Library</b> is in your <b>Hand</b></span></p>
                     <div th:if="${param.error}">
                         <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
@@ -70,12 +74,13 @@
                     <div th:if="${param.logout}">
                         <p class="text-warning">You have been logged out.</p>
                     </div>
-
-                    <form class="slides-form" th:action="@{/login}" method="post">
-                        <input type="email" class="input-9 fromCenter" name="email" placeholder="Email" val=""/>
-                        <input type="password" class="input-9 fromCenter" name="password" placeholder="Password"
+                    <form class="slides-form" th:action="@{/login}" method="post" autocomplete="off">
+                        <input type="email" class="input-9 ae-4 fromCenter" name="email" placeholder="Email"
                                val=""/>
-                        <button type="submit" class="button blue gradient fromCenter" name="button">Login</button>
+                        <input type="password" class="input-9 ae-5 fromCenter" name="password"
+                               placeholder="Password" val=""/>
+                        <button type="submit" class="button blue gradient ae-7 fromCenter" name="button">Login
+                        </button>
                     </form>
                 </div>
 
