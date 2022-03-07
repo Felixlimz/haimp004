@@ -1,7 +1,9 @@
 package com.miniproject.haimp004.controller;
 
+import com.miniproject.haimp004.data.BorrowTransaction;
 import com.miniproject.haimp004.data.Category;
 import com.miniproject.haimp004.data.Product;
+import com.miniproject.haimp004.service.BorrowTransactionService;
 import com.miniproject.haimp004.service.CategoryService;
 import com.miniproject.haimp004.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class ProductApiController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private BorrowTransactionService borrowTransactionService;
 
 //    @RequestMapping("/list")
 //    public String viewListProduct(Model model){
@@ -88,22 +93,8 @@ public class ProductApiController {
         Product product = productService.get(id);
         modelAndView.addObject("product", product);
 
-        List<Category> listCategory = categoryService.listAll();
-
-        Category temp = new Category();
-        for(Category category: listCategory){
-            if(category.getNameCategory().equals(product.getProductCategory())){
-                temp = category;
-            }
-        }
-        int itemPos = listCategory.indexOf(temp);
-        System.out.println(itemPos);
-        System.out.println(temp);
-        listCategory.remove(itemPos);
-        listCategory.add(0, temp);
-
-        modelAndView.addObject("listCategory", listCategory);
-
+        List<BorrowTransaction> listBorrow = borrowTransactionService.listWhoBorrowBook(id);
+        modelAndView.addObject("listBorrow", listBorrow);
 
         return modelAndView;
     }

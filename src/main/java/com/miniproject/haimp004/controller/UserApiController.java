@@ -1,21 +1,14 @@
 package com.miniproject.haimp004.controller;
 
-import com.miniproject.haimp004.data.CustomUserDetails;
 import com.miniproject.haimp004.data.User;
-import com.miniproject.haimp004.service.CustomUserDetailService;
 import com.miniproject.haimp004.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 
 @Controller
 @RequestMapping(path = "/user")
@@ -23,6 +16,7 @@ public class UserApiController {
 
     @Autowired
     private UserService userService;
+
 
 //    @RequestMapping("/list")
 //    public  String viewListUser(Model model){

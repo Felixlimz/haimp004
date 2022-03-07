@@ -245,13 +245,9 @@
                                                placeholder="Product Name" th:field="*{productName}" readonly>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputName1">Category</label>
-                                        <select type="radio" name="productCategory" th:field="*{productCategory}"
-                                                class="form-control" disabled>
-                                            <option th:each="category :${listCategory}"
-                                                    th:text="${category.nameCategory}"
-                                                    th:value="${category.nameCategory}">
-                                        </select>
+                                        <label for="exampleInputName1">Product Name</label>
+                                        <input type="text" class="form-control" id="exampleInputNamex"
+                                               placeholder="Product Name" th:field="*{productCategory}" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputName1">Stock</label>
@@ -266,6 +262,52 @@
                                     <a th:href="@{'/borrow/add/' + ${product.productNo}}" class="btn btn-primary mr-2">Borrow</a>
                                     <a class="btn btn-light" th:href="@{/product}">Cancel</a>
                                 </form>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            ID Transaction
+                                        </th>
+                                        <th>
+                                            User ID
+                                        </th>
+                                        <th>
+                                            Product ID
+                                        </th>
+                                        <th>
+                                            Username
+                                        </th>
+                                        <th>
+                                            Email
+                                        </th>
+                                        <th>
+                                            Action
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="borrow : ${listBorrow}">
+                                        <td th:text="${borrow.id}">ID Transaction</td>
+                                        <td th:text="${borrow.idUser}">User ID</td>
+                                        <td th:text="${borrow.idProduct}">Product ID</td>
+                                        <td th:text="${borrow.userName}">Username</td>
+                                        <td th:text="${borrow.userEmail}">Email</td>
+                                        <td>
+
+                                            <a type="button" class="btn btn-success btn-rounded btn-fw"
+                                               th:href="@{'/product/detail/' + ${product.productNo}}">View</a>
+                                            <a type="button" class="btn btn-info btn-rounded btn-fw"
+                                               th:href="@{'/product/edit/' + ${product.productNo}}">Edit</a>
+                                            <a type="button" class="btn btn-danger btn-rounded btn-fw"
+                                               th:href="@{'/product/delete/' + ${product.productNo}}">
+                                                X
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
