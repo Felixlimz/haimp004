@@ -264,7 +264,7 @@
                                                placeholder="Image Link" th:field="*{imageLink}" readonly>
                                     </div>
                                     <a th:href="@{'/borrow/add/' + ${product.productNo}}" class="btn btn-primary mr-2">Borrow</a>
-                                    <button class="btn btn-light">Cancel</button>
+                                    <a class="btn btn-light" th:href="@{/product}">Cancel</a>
                                 </form>
                             </div>
                         </div>
