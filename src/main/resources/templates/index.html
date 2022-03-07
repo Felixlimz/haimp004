@@ -42,9 +42,9 @@
         <div class="center">
         </div>
         <div class="right">
-            <ul class="menu trim">
-                <li><a href="#" class="popupTrigger" data-popup-id="89-3">Login</a></li>
-            </ul>
+            <!--            <ul class="menu trim">-->
+            <!--                <li><a href="#" class="popupTrigger" data-popup-id="89-3">Login</a></li>-->
+            <!--            </ul>-->
         </div>
     </div>
     <div class="sections compact hidden">
@@ -70,17 +70,12 @@
                     <div th:if="${param.logout}">
                         <p class="text-warning">You have been logged out.</p>
                     </div>
-                    <form class="slides-form" action="#" autocomplete="off">
-                        <input type="text" class="input-9 ae-3 fromCenter" name="user-name" placeholder="Fullname"
+
+                    <form class="slides-form" th:action="@{/login}" method="post">
+                        <input type="email" class="input-9 fromCenter" name="email" placeholder="Email" val=""/>
+                        <input type="password" class="input-9 fromCenter" name="password" placeholder="Password"
                                val=""/>
-                        <input type="email" class="input-9 ae-4 fromCenter" name="user-email" placeholder="Email"
-                               val=""/>
-                        <input type="password" class="input-9 ae-5 fromCenter" name="user-password"
-                               placeholder="Password" val=""/>
-                        <input type="password" class="input-9 ae-6 fromCenter" name="confirm-password"
-                               placeholder="Confirm the password" val=""/>
-                        <button type="submit" class="button blue gradient ae-7 fromCenter" name="button">Get Started
-                        </button>
+                        <button type="submit" class="button blue gradient fromCenter" name="button">Login</button>
                     </form>
                 </div>
 
@@ -91,27 +86,27 @@
 </section>
 
 <!-- Popup Video -->
-<div class="popup autoplay" data-popup-id="89-3">
-    <!-- <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div> -->
-    <div class="content">
-        <div class="container">
-            <div class="wrap">
-                <div class="fix-10-12">
-                    <p class=""><span class="opacity-8">Login</span></p>
-                    <form class="slides-form" th:action="@{/login}" method="post">
-                        <input type="email" class="input-9 fromCenter" name="email" placeholder="Email" val=""/>
-                        <input type="password" class="input-9 fromCenter" name="password" placeholder="Password"
-                               val=""/>
-                        <button type="submit" class="button blue gradient fromCenter" name="button">Login</button>
-                    </form>
-                    <!-- <div class="embedVideo popupContent">
-                      <iframe src="https://www.youtube.com/embed/g8yBqxTiHSs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="popup autoplay" data-popup-id="89-3">-->
+<!--    &lt;!&ndash; <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div> &ndash;&gt;-->
+<!--    <div class="content">-->
+<!--        <div class="container">-->
+<!--            <div class="wrap">-->
+<!--                <div class="fix-10-12">-->
+<!--                    <p class=""><span class="opacity-8">Login</span></p>-->
+<!--                    <form class="slides-form" th:action="@{/login}" method="post">-->
+<!--                        <input type="email" class="input-9 fromCenter" name="email" placeholder="Email" val=""/>-->
+<!--                        <input type="password" class="input-9 fromCenter" name="password" placeholder="Password"-->
+<!--                               val=""/>-->
+<!--                        <button type="submit" class="button blue gradient fromCenter" name="button">Login</button>-->
+<!--                    </form>-->
+<!--                    &lt;!&ndash; <div class="embedVideo popupContent">-->
+<!--                      <iframe src="https://www.youtube.com/embed/g8yBqxTiHSs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+<!--                    </div> &ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 </body>
 </html>
