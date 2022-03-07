@@ -24,14 +24,7 @@ public class User {
     @Column(nullable = false, length = 64)
     private String password;
 
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles = new HashSet<>();
+    private String role;
 
     public Integer getId() {
         return id;
@@ -75,11 +68,11 @@ public class User {
         this.userName = userName;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public String getRoles() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRoles(String role) {
+        this.role = role;
     }
 }

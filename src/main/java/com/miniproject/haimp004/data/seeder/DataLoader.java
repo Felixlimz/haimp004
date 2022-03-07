@@ -22,18 +22,21 @@ public class DataLoader {
     @Autowired
     private CategoryService categoryService;
 
+
     @EventListener
     private void run(ContextRefreshedEvent event){
         loadData();
     }
 
     private void loadData() {
+
         if(userService.countUser() == 0){
             User user = new User();
             user.setUserName("felixlim");
             user.setPassword("password");
             user.setEmail("felix@gmail.com");
             user.setName("Felix Lim");
+            user.setRoles("ADMIN");
             userService.save(user);
         }
 

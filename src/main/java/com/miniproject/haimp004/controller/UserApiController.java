@@ -19,6 +19,7 @@ public class UserApiController {
     @Autowired
     private UserService userService;
 
+
     @GetMapping("/list")
     List<User> all() {
         return userService.listAll();
@@ -40,8 +41,8 @@ public class UserApiController {
             defaultPassword = userService.getUserByName(user.getName()).getPassword();
         }
         user.setPassword(defaultPassword);
+        user.setRoles("USER");
         userService.save(user);
-        System.out.println(user);
 
         return "redirect:/user";
     }
