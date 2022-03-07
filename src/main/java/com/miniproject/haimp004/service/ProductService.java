@@ -41,4 +41,8 @@ public class ProductService {
     public Page<Product> listAllPaging(int page, int size){
         return productRepository.findAll(PageRequest.of(page, size));
     }
+
+    public List<Product> listProductByCategory(String categoryName){
+        return productRepository.listProductByCategory(categoryName);
+    }
 }

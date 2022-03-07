@@ -17,4 +17,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value = "SELECT count(*) FROM product", nativeQuery = true)
     Integer countProduct();
 
+    @Query(value = "SELECT * FROM product p WHERE p.productCategory = :category", nativeQuery = true)
+    List<Product> listProductByCategory(@Param("category") String categoryName);
+
 }
