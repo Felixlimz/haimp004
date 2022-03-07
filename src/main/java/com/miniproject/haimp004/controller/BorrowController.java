@@ -64,7 +64,7 @@ public class BorrowController {
         borrowTransaction.setUserEmail(user.getEmail());
         borrowTransaction.setBorrowDate(Calendar.getInstance().getTime());
         borrowTransactionService.save(borrowTransaction);
-        return "redirect:/product";
+        return "redirect:/borrow";
     }
 
     @RequestMapping("/delete/{id}")
