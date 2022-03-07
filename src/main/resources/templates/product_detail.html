@@ -76,7 +76,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo mr-5" th:href="@{/homepage}"><img th:src="@{/images/logo.svg}" class="mr-2"
+            <a class="navbar-brand brand-logo mr-5" th:href="@{/homepage}"><img th:src="@{/images/logo.svg}"
+                                                                                class="mr-2"
                                                                                 alt="logo"/></a>
             <a class="navbar-brand brand-logo-mini" th:href="@{/homepage}"><img th:src="@{/images/logo-mini.svg}"
                                                                                 alt="logo"/></a>
@@ -181,6 +182,7 @@
         <!-- partial:partials/_settings-panel.html -->
         <!-- partial -->
         <!-- partial:partials/_sidebar.html -->
+
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
@@ -214,7 +216,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" th:href="@{/logout}">
                         <i class="ti-power-off menu-icon"></i>
                         <span class="menu-title">Logout</span>
                     </a>
@@ -232,8 +234,11 @@
                                 <p class="card-description">
                                     <!-- Basic form elements -->
                                 </p>
-                                <form class="forms-sample"  th:object="${product}" method="post">
+                                <form class="forms-sample" th:object="${product}" method="post">
                                     <input type="hidden" th:field="*{productNo}" readonly="readonly"/>
+                                    <div class="form-group">
+                                        <img th:src="*{imageLink}" default="image">
+                                    </div>
                                     <div class="form-group">
                                         <label for="exampleInputName1">Product Name</label>
                                         <input type="text" class="form-control" id="exampleInputName1"
@@ -259,8 +264,7 @@
                                                placeholder="Image Link" th:field="*{imageLink}" readonly>
                                     </div>
                                     <a th:href="@{'/borrow/add/' + ${product.productNo}}" class="btn btn-primary mr-2">Borrow</a>
-                                    <!--                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>-->
-                                    <!--                                    <button class="btn btn-light">Cancel</button>-->
+                                    <button class="btn btn-light">Cancel</button>
                                 </form>
                             </div>
                         </div>
