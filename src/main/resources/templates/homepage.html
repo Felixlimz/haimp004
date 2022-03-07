@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
   <!-- Required meta tags -->
@@ -308,7 +309,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/borrow}">
+            <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" th:href="@{/borrow}">
               <i class="icon-book menu-icon"></i>
               <span class="menu-title">Borrow List</span>
             </a>
@@ -326,7 +327,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/user}">
+            <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" th:href="@{/user}">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">User</span>
             </a>
