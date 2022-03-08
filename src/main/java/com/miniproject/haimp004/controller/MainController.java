@@ -77,11 +77,25 @@ public class MainController {
     }
 
     @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public String categoryPage(Model model, String error, String logout){
-        List<Category> listCategory = categoryService.listAll();
+    public String categoryPage(Model model, @RequestParam(required = false) Integer page){
+        if(page == null){
+            page = 0;
+        }
+        Page<Category> pageCategory = categoryService.listAllPaging(page, 5);
+        int totalPages = pageCategory.getTotalPages();
+        long totalElements = pageCategory.getTotalElements();
+        List<Category> listCategory = pageCategory.getContent();
+
         model.addAttribute("listCategory", listCategory);
-        Category category = new Category();
-        model.addAttribute("category", category);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalElements", totalElements);
+        model.addAttribute("currentPage", (page + 1));
+
+
+//        List<Category> listCategory = categoryService.listAll();
+//        model.addAttribute("listCategory", listCategory);
+//        Category category = new Category();
+//        model.addAttribute("category", category);
         return "category";
     }
 
