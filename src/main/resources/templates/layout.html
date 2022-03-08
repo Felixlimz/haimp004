@@ -153,7 +153,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" th:href="@{/product}">
+                    <a class="nav-link" th:href="@{/product}">
                         <i class="icon-box menu-icon"></i>
                         <span class="menu-title">Product</span>
                     </a>
@@ -165,7 +165,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/user}">
+                    <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" th:href="@{/user}">
                         <i class="icon-head menu-icon"></i>
                         <span class="menu-title">User</span>
                     </a>
