@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       layout:decorate="~{layout.html}">
 <head>
     <title>Category : Add | Toshokan</title>
@@ -21,7 +20,7 @@
                     <form class="forms-sample" th:action="@{/category/save}" th:object="${category}"
                           method="post">
                         <div class="form-group">
-                            <label for="exampleInputName1">Product Name</label>
+                            <label for="exampleInputName1">Category Name</label>
                             <input type="text" class="form-control" id="exampleInputName1"
                                    placeholder="Product Name" th:field="*{nameCategory}">
                         </div>
