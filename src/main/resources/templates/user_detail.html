@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{layout.html}">
+<head>
+    <title>Product : Detail | Toshokan</title>
+    <script src="content-script.js"></script>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">User Borrow</h4>
+                    <p class="card-description">
+                        <!-- Basic form elements -->
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <input class="checkbox" type="checkbox">
+                                </th>
+                                <th>Borrow ID</th>
+                                <th>UserName</th>
+                                <th>Borrower Email</th>
+                                <th>Book Title</th>
+                                <th>Borrow Date</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="borrow : ${listBorrow}">
+                                <td><input class="checkbox" type="checkbox"></td>
+                                <td th:text="${borrow.id}">Borrow ID</td>
+                                <td th:text="${borrow.userName}">UserName</td>
+                                <td th:text="${borrow.userEmail}">Borrower Email</td>
+                                <td th:text="${borrow.bookName}">Book Title</td>
+                                <td th:text="${borrow.borrowDate}">Borrow Date</td>
+                                <td>
+                                    <a th:href="@{'/borrow/delete/' + ${borrow.id}}"
+                                       class="btn btn-success btn-rounded btn-fw">Return</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

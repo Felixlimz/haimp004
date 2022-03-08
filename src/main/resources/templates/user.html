@@ -44,7 +44,8 @@
                                 <td th:text="${users.userName}">UserName</td>
                                 <td th:text="${users.email}">Email</td>
                                 <td>
-                                    <a type="button" class="btn btn-success btn-rounded btn-fw">View</a>
+                                    <a type="button" class="btn btn-success btn-rounded btn-fw"
+                                       th:href="@{'/user/detail/' + ${users.id}}">View</a>
                                     <a type="button" class="btn btn-info btn-rounded btn-fw"
                                        th:href="@{'/user/edit/' + ${users.id}}">Edit</a>
                                     <a type="button" class="btn btn-danger btn-rounded btn-fw"
