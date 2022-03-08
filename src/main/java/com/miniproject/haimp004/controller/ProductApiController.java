@@ -101,23 +101,33 @@ public class ProductApiController {
         return modelAndView;
     }
 
-    @RequestMapping("/{page}/{size}")
-    public String viewListProductPagination(Model model, @PathVariable int page){
-        Page<Product> listProduct = productService.listAllPaging(page, 5);
-        model.addAttribute("listProducts", listProduct);
-
-        return "list_product_page";
-    }
-
-    @RequestMapping("/test")
-    public  String viewListProductPagination(Model model, @RequestParam(required = false) Integer page){
+    @RequestMapping("/testproduct")
+    public String viewListProductPagination(Model model, @RequestParam(required = false) Integer page){
         if(page == null){
             page = 0;
         }
-        Page<Product> listProduct = productService.listAllPaging(page, 5);
-        model.addAttribute("listProduct", listProduct);
+        Page<Product> pageProduct = productService.listAllPaging(page, 5);
+        int totalPages = pageProduct.getTotalPages();
+        long totalElements = pageProduct.getTotalElements();
+        List<Product> listProduct = pageProduct.getContent();
 
-        return "list_product_page";
+        model.addAttribute("listProducts", listProduct);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalElements", totalElements);
+        model.addAttribute("currentPage", (page + 1));
+
+        return "product2";
     }
+
+//    @RequestMapping("/test")
+//    public  String testPagination(Model model, @RequestParam(required = false) Integer page){
+//        if(page == null){
+//            page = 0;
+//        }
+//        Page<Product> listProduct = productService.listAllPaging(page, 5);
+//        model.addAttribute("listProduct", listProduct);
+//
+//        return "list_product_page";
+//    }
 
 }
