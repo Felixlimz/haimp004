@@ -62,8 +62,11 @@ public class UserApiController {
         return "redirect:/user";
     }
 
-    @RequestMapping("/{page}")
-    public  String viewListUserPagination(Model model, @PathVariable int page){
+    @RequestMapping("/test")
+    public  String viewListUserPagination(Model model, @RequestParam(required = false) Integer page){
+        if(page == null){
+            page = 0;
+        }
         Page<User> listUser = userService.listAllPaging(page, 5);
         model.addAttribute("listUser", listUser);
 

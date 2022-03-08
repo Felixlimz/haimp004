@@ -67,9 +67,9 @@ public class CategoryApiController {
         return "redirect:/category";
     }
 
-    @RequestMapping("/{page}/{size}")
-    public String viewListCategoryPagination(Model model, @PathVariable int page){
-        Page<Category> listCategory = categoryService.listAllPaging(page, 5);
+    @RequestMapping("")
+    public String viewListCategoryPagination(Model model, @RequestParam int pages){
+        Page<Category> listCategory = categoryService.listAllPaging(pages, 5);
         model.addAttribute("listCategory", listCategory);
 
         return "list_category_page";
@@ -80,6 +80,17 @@ public class CategoryApiController {
         List<Product> listProduct = productService.listProductByCategory(categoryService.get(id).getNameCategory());
         model.addAttribute("listProduct", listProduct);
         return "list_product_page";
+    }
+
+    @RequestMapping("/test")
+    public  String viewListCategoryPagination(Model model, @RequestParam(required = false) Integer page){
+        if(page == null){
+            page = 0;
+        }
+        Page<Category> listCategory = categoryService.listAllPaging(page, 5);
+        model.addAttribute("listCategory", listCategory);
+
+        return "list_category_page";
     }
 
 }
