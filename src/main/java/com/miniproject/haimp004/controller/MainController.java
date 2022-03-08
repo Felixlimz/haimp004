@@ -126,4 +126,9 @@ public class MainController {
         SecurityContextHolder.getContext().setAuthentication(null);
         return "redirect:/";
     }
+
+    @RequestMapping("/test")
+    public String test(){
+        return "test";
+    }
 }
