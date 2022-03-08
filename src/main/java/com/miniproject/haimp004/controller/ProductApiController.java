@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.awt.*;
 import java.util.List;
 
 @Controller
@@ -118,4 +119,5 @@ public class ProductApiController {
 
         return "list_product_page";
     }
+
 }
