@@ -100,8 +100,8 @@ public class ProductApiController {
     }
 
     @RequestMapping("/{page}/{size}")
-    public String viewListProductPagination(Model model, @PathVariable int page, @PathVariable int size){
-        Page<Product> listProduct = productService.listAllPaging(page, size);
+    public String viewListProductPagination(Model model, @PathVariable int page){
+        Page<Product> listProduct = productService.listAllPaging(page, 5);
         model.addAttribute("listProducts", listProduct);
 
         return "list_product_page";

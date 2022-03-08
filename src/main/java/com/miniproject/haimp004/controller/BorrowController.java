@@ -73,8 +73,8 @@ public class BorrowController {
     }
 
     @RequestMapping("/{page}/{size}")
-    public  String viewListBorrowPagination(Model model, @PathVariable int page, @PathVariable int size){
-        Page<BorrowTransaction> listBorrowTransaction = borrowTransactionService.listAllPaging(size, page);
+    public  String viewListBorrowPagination(Model model, @PathVariable int page){
+        Page<BorrowTransaction> listBorrowTransaction = borrowTransactionService.listAllPaging(page, 5);
         model.addAttribute("listBorrow", listBorrowTransaction);
 
         return "borrow";

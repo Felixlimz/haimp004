@@ -68,8 +68,8 @@ public class CategoryApiController {
     }
 
     @RequestMapping("/{page}/{size}")
-    public String viewListCategoryPagination(Model model, @PathVariable int page, @PathVariable int size){
-        Page<Category> listCategory = categoryService.listAllPaging(page, size);
+    public String viewListCategoryPagination(Model model, @PathVariable int page){
+        Page<Category> listCategory = categoryService.listAllPaging(page, 5);
         model.addAttribute("listCategory", listCategory);
 
         return "list_category_page";
