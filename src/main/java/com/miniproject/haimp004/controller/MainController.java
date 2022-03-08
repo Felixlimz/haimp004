@@ -125,7 +125,7 @@ public class MainController {
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("totalElements", totalElements);
         model.addAttribute("currentPage", (page + 1));
-        
+
         return "borrow";
     }
 
@@ -163,6 +163,8 @@ public class MainController {
 
     @RequestMapping("/test")
     public String test(){
+        Category category = categoryService.get(4);
+        System.out.println(category.getProducts());
         return "test";
     }
 

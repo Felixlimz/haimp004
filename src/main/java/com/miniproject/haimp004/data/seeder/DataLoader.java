@@ -71,6 +71,7 @@ public class DataLoader {
             product.setProductCategory("Folklore of Indonesia");
             product.setProductStock(3);
             product.setImageLink("https://ebooks.gramedia.com/ebook-covers/12492/big_covers/ID_HHK2014MTH05MKUN_B.jpg");
+            product.setCategory(categoryService.get(5));
             productService.saveProduct(product);
 
             Product product1 = new Product();

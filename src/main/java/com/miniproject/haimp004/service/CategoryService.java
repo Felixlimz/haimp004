@@ -40,4 +40,8 @@ public class CategoryService {
     public Page<Category> listAllPaging(int page, int size){
         return categoryRepository.findAll(PageRequest.of(page, size));
     }
+
+    public Category findCategoryByName(String name){
+        return categoryRepository.findCategoryByName(name);
+    }
 }

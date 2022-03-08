@@ -39,10 +39,8 @@ public class ProductApiController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveProductAction(@ModelAttribute("product") Product product){
+        product.setCategory(categoryService.findCategoryByName(product.getProductCategory()));
         productService.saveProduct(product);
-
-        System.out.println(product);
-        System.out.println("SUKSES");
 
         return "redirect:/product";
     }

@@ -2,7 +2,6 @@ package com.miniproject.haimp004.controller;
 
 import com.miniproject.haimp004.data.Category;
 import com.miniproject.haimp004.data.Product;
-import com.miniproject.haimp004.data.User;
 import com.miniproject.haimp004.service.CategoryService;
 import com.miniproject.haimp004.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

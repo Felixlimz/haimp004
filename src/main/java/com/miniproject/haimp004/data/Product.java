@@ -1,5 +1,6 @@
 package com.miniproject.haimp004.data;
 
+import org.hibernate.annotations.Formula;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -17,6 +18,10 @@ public class Product {
     private Integer productStock;
 
     private String imageLink;
+
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Category category;
 
     //Setter dan Getter
     public Integer getProductNo() {
@@ -57,5 +62,13 @@ public class Product {
 
     public void setImageLink(String imageLink) {
         this.imageLink = imageLink;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

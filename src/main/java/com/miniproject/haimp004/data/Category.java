@@ -1,12 +1,8 @@
 package com.miniproject.haimp004.data;
 
-import org.springframework.data.repository.query.Param;
+import javax.persistence.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -16,6 +12,9 @@ public class Category {
     private Integer id;
     private String nameCategory;
     private String detailCategory;
+
+    @OneToMany(mappedBy = "category")
+    private List<Product> products = new LinkedList<>();
 
     public Integer getId() {
         return id;
@@ -39,5 +38,13 @@ public class Category {
 
     public void setDetailCategory(String detailCategory) {
         this.detailCategory = detailCategory;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }
