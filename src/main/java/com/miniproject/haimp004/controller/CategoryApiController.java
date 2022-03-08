@@ -23,18 +23,6 @@ public class CategoryApiController {
     @Autowired
     private ProductService productService;
 
-
-//    @RequestMapping("/list")
-//    public  String viewListCategory(Model model){
-//        List<Category> listCategory = categoryService.listAll();
-//        model.addAttribute("listCategory", listCategory);
-//
-//        Category category = new Category();
-//        model.addAttribute("category", category);
-//
-//        return "category";
-//     }
-
     @RequestMapping("/new")
     public ModelAndView viewAddNewCategory(){
         ModelAndView modelAndView = new ModelAndView("new_category_page");
@@ -67,30 +55,15 @@ public class CategoryApiController {
         return "redirect:/category";
     }
 
-    @RequestMapping("")
-    public String viewListCategoryPagination(Model model, @RequestParam int pages){
-        Page<Category> listCategory = categoryService.listAllPaging(pages, 5);
-        model.addAttribute("listCategory", listCategory);
-
-        return "list_category_page";
-    }
 
     @RequestMapping("/{id}")
     public String viewProductByCategory(Model model, @PathVariable int id){
-        List<Product> listProduct = productService.listProductByCategory(categoryService.get(id).getNameCategory());
-        model.addAttribute("listProduct", listProduct);
-        return "product_category";
-    }
-
-    @RequestMapping("/test")
-    public  String viewListCategoryPagination(Model model, @RequestParam(required = false) Integer page){
-        if(page == null){
-            page = 0;
-        }
-        Page<Category> listCategory = categoryService.listAllPaging(page, 5);
-        model.addAttribute("listCategory", listCategory);
-
-        return "list_category_page";
+        String nameCat = categoryService.get(id).getNameCategory();
+        List<Product> listProduct = productService.listProductByCategory(nameCat);
+        System.out.println(nameCat);
+        System.out.println(listProduct);
+        model.addAttribute("listProducts", listProduct);
+        return "category_detail";
     }
 
 }

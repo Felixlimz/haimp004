@@ -85,7 +85,9 @@ public class ProductApiController {
         modelAndView.addObject("product", product);
 
         List<BorrowTransaction> listBorrow = borrowTransactionService.listWhoBorrowBook(id);
+        int size = listBorrow.size();
         modelAndView.addObject("listBorrow", listBorrow);
+        modelAndView.addObject("sizeBorrow", size);
 
         return modelAndView;
     }
