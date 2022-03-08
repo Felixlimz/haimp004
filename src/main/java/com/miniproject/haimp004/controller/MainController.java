@@ -97,13 +97,7 @@ public class MainController {
 
     @GetMapping(path = "/init")
     public String initProcess(){
-        User user = new User();
-        user.setUserName("felixlim");
-        user.setPassword("password");
-        user.setEmail("felixlim@gmail.com");
-        user.setName("Felix Lim");
-        userService.save(user);
-        return "SAVED";
+        return "boom";
     }
 
     @GetMapping(path = "/editpassword")
