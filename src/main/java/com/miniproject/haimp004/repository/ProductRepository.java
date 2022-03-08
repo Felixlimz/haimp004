@@ -1,6 +1,8 @@
 package com.miniproject.haimp004.repository;
 
 import com.miniproject.haimp004.data.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,6 +18,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     Integer countProduct();
 
     @Query(value = "SELECT * FROM product p WHERE p.product_category = :categoryName", nativeQuery = true)
-    List<Product> listProductByCategory(@Param("categoryName") String categoryName);
+    Page<Product> listProductByCategory(@Param("categoryName") String categoryName, Pageable pageable);
 
 }

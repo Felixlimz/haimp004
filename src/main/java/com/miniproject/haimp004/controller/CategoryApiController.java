@@ -57,12 +57,20 @@ public class CategoryApiController {
 
 
     @RequestMapping("/{id}")
-    public String viewProductByCategory(Model model, @PathVariable int id){
+    public String viewProductByCategory(Model model, @PathVariable int id, @RequestParam(required = false) Integer page){
+        if(page == null){
+            page = 0;
+        }
         String nameCat = categoryService.get(id).getNameCategory();
-        List<Product> listProduct = productService.listProductByCategory(nameCat);
-        System.out.println(nameCat);
-        System.out.println(listProduct);
+        Page<Product> pageProduct = productService.listProductByCategory(nameCat, page, 5);
+        int totalPages = pageProduct.getTotalPages();
+        long totalElements = pageProduct.getTotalElements();
+        List<Product> listProduct = pageProduct.getContent();
+
         model.addAttribute("listProducts", listProduct);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalElements", totalElements);
+        model.addAttribute("currentPage", (page + 1));
         return "category_detail";
     }
 

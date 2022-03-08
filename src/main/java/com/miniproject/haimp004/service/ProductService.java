@@ -42,7 +42,7 @@ public class ProductService {
         return productRepository.findAll(PageRequest.of(page, size));
     }
 
-    public List<Product> listProductByCategory(String categoryName){
-        return productRepository.listProductByCategory(categoryName);
+    public Page<Product> listProductByCategory(String categoryName, int page, int size){
+        return productRepository.listProductByCategory(categoryName, PageRequest.of(page,size));
     }
 }
