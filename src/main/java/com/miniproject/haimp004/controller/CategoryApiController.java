@@ -79,7 +79,7 @@ public class CategoryApiController {
     public String viewProductByCategory(Model model, @PathVariable int id){
         List<Product> listProduct = productService.listProductByCategory(categoryService.get(id).getNameCategory());
         model.addAttribute("listProduct", listProduct);
-        return "list_product_page";
+        return "product_category";
     }
 
     @RequestMapping("/test")
