@@ -3,18 +3,15 @@ package com.miniproject.haimp004.controller;
 import com.miniproject.haimp004.data.BorrowTransaction;
 import com.miniproject.haimp004.data.Category;
 import com.miniproject.haimp004.data.Product;
-import com.miniproject.haimp004.data.User;
 import com.miniproject.haimp004.service.BorrowTransactionService;
 import com.miniproject.haimp004.service.CategoryService;
 import com.miniproject.haimp004.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.awt.*;
 import java.util.List;
 
 @Controller
@@ -28,14 +25,6 @@ public class ProductApiController {
 
     @Autowired
     private BorrowTransactionService borrowTransactionService;
-
-//    @RequestMapping("/list")
-//    public String viewListProduct(Model model){
-//        List<Product> listProduct = productService.listAll();
-//        model.addAttribute("listProducts", listProduct);
-//
-//        return "list_product_page";
-//    }
 
     @RequestMapping("/new")
     public String viewAddNewProduct(Model model){
@@ -100,34 +89,5 @@ public class ProductApiController {
 
         return modelAndView;
     }
-
-    @RequestMapping("/testproduct")
-    public String viewListProductPagination(Model model, @RequestParam(required = false) Integer page){
-        if(page == null){
-            page = 0;
-        }
-        Page<Product> pageProduct = productService.listAllPaging(page, 5);
-        int totalPages = pageProduct.getTotalPages();
-        long totalElements = pageProduct.getTotalElements();
-        List<Product> listProduct = pageProduct.getContent();
-
-        model.addAttribute("listProducts", listProduct);
-        model.addAttribute("totalPages", totalPages);
-        model.addAttribute("totalElements", totalElements);
-        model.addAttribute("currentPage", (page + 1));
-
-        return "product2";
-    }
-
-//    @RequestMapping("/test")
-//    public  String testPagination(Model model, @RequestParam(required = false) Integer page){
-//        if(page == null){
-//            page = 0;
-//        }
-//        Page<Product> listProduct = productService.listAllPaging(page, 5);
-//        model.addAttribute("listProduct", listProduct);
-//
-//        return "list_product_page";
-//    }
 
 }

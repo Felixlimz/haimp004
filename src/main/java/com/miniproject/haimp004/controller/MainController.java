@@ -3,6 +3,7 @@ package com.miniproject.haimp004.controller;
 import com.miniproject.haimp004.data.*;
 import com.miniproject.haimp004.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -57,10 +58,20 @@ public class MainController {
         return "homepage";
     }
 
-    @RequestMapping(value = "/product", method = RequestMethod.GET)
-    public String productPage(Model model, String error, String logout){
-        List<Product> listProduct = productService.listAll();
+    @RequestMapping("/product")
+    public String productPage(Model model, @RequestParam(required = false) Integer page){
+        if(page == null){
+            page = 0;
+        }
+        Page<Product> pageProduct = productService.listAllPaging(page, 5);
+        int totalPages = pageProduct.getTotalPages();
+        long totalElements = pageProduct.getTotalElements();
+        List<Product> listProduct = pageProduct.getContent();
+
         model.addAttribute("listProducts", listProduct);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalElements", totalElements);
+        model.addAttribute("currentPage", (page + 1));
 
         return "product";
     }
