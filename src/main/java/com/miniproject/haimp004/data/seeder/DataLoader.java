@@ -71,7 +71,7 @@ public class DataLoader {
             product.setProductCategory("Folklore of Indonesia");
             product.setProductStock(3);
             product.setImageLink("https://ebooks.gramedia.com/ebook-covers/12492/big_covers/ID_HHK2014MTH05MKUN_B.jpg");
-            product.setCategory(categoryService.get(5));
+            product.setCategory(categoryService.get(1));
             productService.saveProduct(product);
 
             Product product1 = new Product();
@@ -79,6 +79,7 @@ public class DataLoader {
             product1.setProductCategory("Horror");
             product1.setProductStock(2);
             product1.setImageLink("https://images-na.ssl-images-amazon.com/images/I/810pcXb+l3L.jpg");
+            product1.setCategory(categoryService.get(2));
             productService.saveProduct(product1);
 
             Product product2 = new Product();
@@ -86,6 +87,7 @@ public class DataLoader {
             product2.setProductCategory("Classic");
             product2.setProductStock(3);
             product2.setImageLink("https://upload.wikimedia.org/wikipedia/commons/4/4f/To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg");
+            product2.setCategory(categoryService.get(3));
             productService.saveProduct(product2);
 
             Product product3 = new Product();
@@ -93,6 +95,7 @@ public class DataLoader {
             product3.setProductCategory("Classic");
             product3.setProductStock(3);
             product3.setImageLink("https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781982146702/the-great-gatsby-9781982146702_hr.jpg");
+            product3.setCategory(categoryService.get(3));
             productService.saveProduct(product3);
 
             Product product4 = new Product();
@@ -100,6 +103,7 @@ public class DataLoader {
             product4.setProductCategory("Classic");
             product4.setProductStock(3);
             product4.setImageLink("https://ebooks.gramedia.com/ebook-covers/6297/big_covers/ID_GPU2013MTH07WHEI_B_.jpg");
+            product4.setCategory(categoryService.get(3));
             productService.saveProduct(product4);
 
             Product product5 = new Product();
@@ -107,6 +111,7 @@ public class DataLoader {
             product5.setProductCategory("Folklore of Indonesia");
             product5.setProductStock(4);
             product5.setImageLink("https://images-na.ssl-images-amazon.com/images/I/51H%2Bj71AMlL._SX342_SY445_QL70_ML2_.jpg");
+            product5.setCategory(categoryService.get(1));
             productService.saveProduct(product5);
 
 
