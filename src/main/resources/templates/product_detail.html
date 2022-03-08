@@ -20,82 +20,77 @@
                     </p>
                     <form class="forms-sample" th:object="${product}" method="post">
                         <input type="hidden" th:field="*{productNo}" readonly="readonly"/>
-                        <div class="form-group">
-                            <img th:src="*{imageLink}" default="image">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <img th:src="*{imageLink}" default="image" style="
+                width:100%;
+                height:100%;
+                object-fit:cover;">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <h1 th:text="*{productName}">Product Name</h1>
+                                    <p>Category : <b><span th:text="*{productCategory}">Category</b></p>
+                                    <p>Stock : <b><span th:text="*{productStock}">Stock</span></b></p>
+                                    <a th:href="@{'/borrow/add/' + ${product.productNo}}"
+                                       class="btn btn-primary mr-2">Borrow</a>
+                                    <a class="btn btn-light" th:href="@{/product}">Cancel</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputName1">Product Name</label>
-                            <input type="text" class="form-control" id="exampleInputName1"
-                                   placeholder="Product Name" th:field="*{productName}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputName1">Product Name</label>
-                            <input type="text" class="form-control" id="exampleInputNamex"
-                                   placeholder="Product Name" th:field="*{productCategory}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputName1">Stock</label>
-                            <input type="number" class="form-control" id="exampleInputName5"
-                                   placeholder="Stock" th:field="*{productStock}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputName1">Image Link</label>
-                            <input type="text" class="form-control" id="exampleInputName6"
-                                   placeholder="Image Link" th:field="*{imageLink}" readonly>
-                        </div>
-                        <a th:href="@{'/borrow/add/' + ${product.productNo}}" class="btn btn-primary mr-2">Borrow</a>
-                        <a class="btn btn-light" th:href="@{/product}">Cancel</a>
                     </form>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>
-                                ID Transaction
-                            </th>
-                            <th>
-                                User ID
-                            </th>
-                            <th>
-                                Product ID
-                            </th>
-                            <th>
-                                Username
-                            </th>
-                            <th>
-                                Email
-                            </th>
-                            <th>
-                                Action
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="borrow : ${listBorrow}">
-                            <td th:text="${borrow.id}">ID Transaction</td>
-                            <td th:text="${borrow.idUser}">User ID</td>
-                            <td th:text="${borrow.idProduct}">Product ID</td>
-                            <td th:text="${borrow.userName}">Username</td>
-                            <td th:text="${borrow.userEmail}">Email</td>
-                            <td>
-
-                                <a type="button" class="btn btn-success btn-rounded btn-fw"
-                                   th:href="@{'/product/detail/' + ${product.productNo}}">View</a>
-                                <a type="button" class="btn btn-info btn-rounded btn-fw"
-                                   th:href="@{'/product/edit/' + ${product.productNo}}">Edit</a>
-                                <a type="button" class="btn btn-danger btn-rounded btn-fw"
-                                   th:href="@{'/product/delete/' + ${product.productNo}}">
-                                    X
-                                </a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">User Borrow</h4>
+                    <p class="card-description">
+                        <!-- Basic form elements -->
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>
+                                    ID Transaction
+                                </th>
+                                <th>
+                                    User ID
+                                </th>
+                                <th>
+                                    Product ID
+                                </th>
+                                <th>
+                                    Username
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="borrow : ${listBorrow}">
+                                <td th:text="${borrow.id}">ID Transaction</td>
+                                <td th:text="${borrow.idUser}">User ID</td>
+                                <td th:text="${borrow.idProduct}">Product ID</td>
+                                <td th:text="${borrow.userName}">Username</td>
+                                <td th:text="${borrow.userEmail}">Email</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </section>
 </body>
 </html>
