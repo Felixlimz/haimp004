@@ -91,30 +91,41 @@ public class MainController {
         model.addAttribute("totalElements", totalElements);
         model.addAttribute("currentPage", (page + 1));
 
-
-//        List<Category> listCategory = categoryService.listAll();
-//        model.addAttribute("listCategory", listCategory);
-//        Category category = new Category();
-//        model.addAttribute("category", category);
         return "category";
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String userPage(Model model, String error, String logout){
-        List<User> listUser = userService.listAll();
+    public String userPage(Model model, @RequestParam(required = false) Integer page){
+        if(page == null){
+            page = 0;
+        }
+        Page<User> pageUser = userService.listAllPaging(page, 5);
+        int totalPages = pageUser.getTotalPages();
+        long totalElements = pageUser.getTotalElements();
+        List<User> listUser = pageUser.getContent();
+
         model.addAttribute("listUser", listUser);
-
-        User user = new User();
-        model.addAttribute("user", user);
-
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalElements", totalElements);
+        model.addAttribute("currentPage", (page + 1));
         return "user";
     }
 
     @RequestMapping("/borrow")
-    public  String viewListBorrow(Model model){
-        List<BorrowTransaction> listBorrowTransaction = borrowTransactionService.listAll();
-        model.addAttribute("listBorrow", listBorrowTransaction);
+    public  String viewListBorrow(Model model, @RequestParam(required = false) Integer page){
+        if(page == null){
+            page = 0;
+        }
+        Page<BorrowTransaction> pageBorrow = borrowTransactionService.listAllPaging(page, 5);
+        int totalPages = pageBorrow.getTotalPages();
+        long totalElements = pageBorrow.getTotalElements();
+        List<BorrowTransaction> listBorrow = pageBorrow.getContent();
 
+        model.addAttribute("listBorrow", listBorrow);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalElements", totalElements);
+        model.addAttribute("currentPage", (page + 1));
+        
         return "borrow";
     }
 
