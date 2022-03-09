@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path = "/category")
-public class CategoryApiController {
+public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
