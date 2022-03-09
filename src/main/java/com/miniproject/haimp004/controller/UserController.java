@@ -1,14 +1,11 @@
 package com.miniproject.haimp004.controller;
 
 import com.miniproject.haimp004.data.BorrowTransaction;
-import com.miniproject.haimp004.data.Product;
 import com.miniproject.haimp004.data.User;
 import com.miniproject.haimp004.service.BorrowTransactionService;
 import com.miniproject.haimp004.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,12 +21,6 @@ public class UserController {
 
     @Autowired
     private BorrowTransactionService borrowTransactionService;
-
-
-    @GetMapping("/list")
-    List<User> all() {
-        return userService.listAll();
-    }
 
     @RequestMapping("/new")
     public ModelAndView viewAddNewCategory(){

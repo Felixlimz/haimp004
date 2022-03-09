@@ -10,8 +10,6 @@ public class CurrentWeather implements Serializable {
     private BigDecimal feelsLike;
     private BigDecimal windSpeed;
 
-// boilerplate getters, constructors, equals, and hashcode omitted
-
     public String getDescription() {
         return description;
     }

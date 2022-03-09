@@ -1,6 +1,5 @@
 package com.miniproject.haimp004.service;
 
-import com.miniproject.haimp004.data.Product;
 import com.miniproject.haimp004.data.User;
 import com.miniproject.haimp004.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -29,15 +29,6 @@ public class BorrowController {
     @Autowired
     private BorrowTransactionService borrowTransactionService;
 
-    @RequestMapping("/list")
-    public  String viewListBorrow(Model model){
-        List<BorrowTransaction> listBorrowTransaction = borrowTransactionService.listAll();
-        model.addAttribute("listBorrow", listBorrowTransaction);
-
-        return "borrow";
-    }
-
-
 
     @RequestMapping(path = "/add/{productid}")
     public ModelAndView viewAddBorrow(@PathVariable(name = "productid") int productId){

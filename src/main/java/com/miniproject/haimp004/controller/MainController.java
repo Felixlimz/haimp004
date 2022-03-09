@@ -30,9 +30,9 @@ public class MainController {
     @Autowired
     private BorrowTransactionService borrowTransactionService;
 
-    public MainController(LiveWeatherService liveWeatherService) {
-        this.liveWeatherService = liveWeatherService;
-    }
+//    public MainController(LiveWeatherService liveWeatherService) {
+//        this.liveWeatherService = liveWeatherService;
+//    }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model, String error, String logout){
@@ -129,11 +129,6 @@ public class MainController {
         return "borrow";
     }
 
-    @GetMapping(path = "/init")
-    public String initProcess(){
-        return "boom";
-    }
-
     @GetMapping(path = "/editpassword")
     public ModelAndView editPassword(){
         ModelAndView modelAndView = new ModelAndView("edit_password");
@@ -159,13 +154,6 @@ public class MainController {
     public String logout(){
         SecurityContextHolder.getContext().setAuthentication(null);
         return "redirect:/";
-    }
-
-    @RequestMapping("/test")
-    public String test(){
-        Category category = categoryService.get(4);
-        System.out.println(category.getProducts());
-        return "test";
     }
 
 }
