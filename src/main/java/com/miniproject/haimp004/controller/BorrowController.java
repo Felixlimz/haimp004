@@ -54,6 +54,8 @@ public class BorrowController {
     public String saveBorrow(@PathVariable(name = "productid") int productId, @PathVariable(name = "userid") int userId){
         User user = userService.get(userId);
         Product product = productService.get(productId);
+        Integer stock = product.getProductStock() - 1;
+        product.setProductStock(stock);
 
         BorrowTransaction borrowTransaction = new BorrowTransaction();
         borrowTransaction.setBookName(product.getProductName());
@@ -63,12 +65,19 @@ public class BorrowController {
         borrowTransaction.setUserEmail(user.getEmail());
         borrowTransaction.setBorrowDate(Calendar.getInstance().getTime());
         borrowTransactionService.save(borrowTransaction);
+        productService.saveProduct(product);
         return "redirect:/borrow";
     }
 
     @RequestMapping("/delete/{id}")
     public String deleteBorrow(@PathVariable(name = "id") int id){
+        BorrowTransaction borrowTransaction = borrowTransactionService.get(id);
+        Integer idProduct = borrowTransaction.getIdProduct();
+        Product product = productService.get(idProduct);
+        Integer stock = product.getProductStock() + 1;
+        product.setProductStock(stock);
         borrowTransactionService.delete(id);
+        productService.saveProduct(product);
         return "redirect:/borrow";
     }
 
