@@ -8,7 +8,7 @@
     <title>Product : Detail | Toshokan</title>
     <script src="content-script.js"></script>
 </head>
-<body>
+<body onload="func()">
 <section layout:fragment="content">
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
@@ -32,10 +32,12 @@
                                 </div>
                                 <div class="col-6">
                                     <h1 th:text="*{productName}">Product Name</h1>
-                                    <p>Category : <b><span th:text="*{productCategory}">Category</b></p>
-                                    <p>Stock : <b><span th:text="*{productStock}">Stock</span></b></p>
+                                    <p>Category : <b><span th:text="*{productCategory}">Category</span></b></p>
+                                    <p>Stock : <b><span th:text="*{productStock}" onload="func()" onfocus="func()">Stock</span></b></p>
+                                    <input type="hidden" id="stock" th:value="*{productStock}" onload="func()" onfocus="func()"/>
+                                    <p id="message" style="display:none;">Stock is empty</p>
                                     <a sec:authorize="hasAuthority('ADMIN')" th:href="@{'/borrow/add/' + ${product.productNo}}"
-                                       class="btn btn-primary mr-2">Borrow</a>
+                                       class="btn btn-primary mr-2" id="submit" onload="func()" onfocus="func()">Borrow</a>
                                     <a class="btn btn-light" th:href="@{/product}">Cancel</a>
                                 </div>
                             </div>
