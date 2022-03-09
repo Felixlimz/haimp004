@@ -1,8 +1,5 @@
 package com.miniproject.haimp004.data;
 
-import org.hibernate.annotations.Formula;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 
 @Entity
