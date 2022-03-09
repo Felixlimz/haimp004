@@ -1,4 +1,4 @@
-# Toshokan
+# Toshokan ( "Perpustakaan" )
 Aplikasi Management Library berbasis Web
 
 ## Preparation  :
